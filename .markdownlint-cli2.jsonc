@@ -1,0 +1,15 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD033": false,
+  },
+  "globs": [
+    "**/*.{md,mdx}",
+    "!node_modules/**",
+    "!build/**",
+    "!.docusaurus/**",
+    "!CHANGELOG.md",
+    "!CHANGELOG*.md",
+  ],
+}

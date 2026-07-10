@@ -1,0 +1,102 @@
+---
+slug: /extension/features/environment-variables
+---
+
+# Environment Variables
+
+Environment variables help you manage dynamic values across your API requests. You can store API keys, base URLs, tokens, and other data that changes between different environments like development, staging, and production.
+
+## 🎯 Variable Scopes
+
+Fetch Client supports three levels of variables, giving you flexibility in how you organize your data:
+
+- **Global Variables** - Available across all collections and requests in your workspace
+- **Collection Variables** - Available only within a specific collection
+- **Request Variables** - Available only for a single request
+
+Use the `{{variableName}}` syntax to reference variables anywhere in your requests, including URLs, query parameters, headers, and request body.
+
+## 🔐 Security Features
+
+Your data is stored in encrypted form. To enable encryption, turn on the **Encryption** option in **Fetch Client Settings**. By default, Fetch Client uses a built-in encryption key. For stronger security, configure your own encryption key to protect your stored variables. You can manage encryption settings at any time from **Fetch Client Settings**.
+
+<div align="center">
+  <img src="/img/enable-encryption.png?raw=true" alt="Encryption Key" />
+</div>
+
+<div align="center">
+  <img src="/img/encryption-variable-key.png?raw=true" alt="Encryption Key" />
+</div>
+
+## 📥 Importing Variables
+
+You can import variables from JSON files in multiple formats:
+
+1. Open the **Environment Variables** tab in the sidebar
+2. Click the **menu icon** and select **Import**
+3. Choose your variable file
+4. Your variables are now ready to use in all requests
+
+:::info
+
+**Supported formats:**
+
+- **Fetch Client** - Native format v1 and v2 (recommended)
+- **Postman** - v2.1
+- **Thunder Client** - v1.2
+
+:::
+
+<div align="center">
+  <img src="/img/import-var-menu.png?raw=true" alt="Import Variables" />
+  <br />
+</div>
+
+## 📤 Exporting Variables
+
+Export your variables to JSON format (with or without encryption) for backup or sharing with your team. This makes it easy to move variables between workspaces or share configurations with team mates.
+
+- Export single variable
+- Bulk Export
+
+<div align="center">
+  <img
+    src="/img/bulk-export-var-menu.png?raw=true"
+    alt="Bulk Export Variables"
+  />
+  <br />
+  <sup>
+    <b>Bulk Export Menu</b>
+  </sup>
+  <br />
+  <br />
+  <img
+    src="/img/bulk-export-var.png?raw=true"
+    alt="Bulk Export Variables"
+    width="750"
+  />
+  <br />
+  <sup>
+    <b>Bulk Export</b>
+  </sup>
+</div>
+
+## ♻️ Dynamic Variable Assignment
+
+Extract data from API responses and automatically save them as variables for use in subsequent requests.
+
+**You can capture values from:**
+
+- Response body (JSON properties)
+- Response headers
+- Cookies
+
+This feature is useful for workflows where you need to:
+
+- Save authentication tokens from login responses
+- Chain multiple API calls together
+- Store dynamic IDs or values for testing
+
+<div align="center">
+  <img src="/img/setvar.png?raw=true" alt="assign variables" />
+</div>

@@ -1,0 +1,58 @@
+.logoWrap svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ring {
+  fill: none;
+  stroke: #039be5;
+  stroke-width: 13;
+  stroke-linecap: round;
+  stroke-dasharray: 742;
+  stroke-dashoffset: 742;
+  transform-origin: 128px 128px;
+  transform: rotate(-90deg);
+  animation: drawCircle 0.9s ease-in-out forwards;
+}
+
+.arrow {
+  fill: #039be5;
+  opacity: 0;
+}
+
+.arrowRight {
+  animation: slideRight 0.6s ease-out 0.9s forwards;
+}
+
+.arrowLeft {
+  animation: slideLeft 0.6s ease-out 1.05s forwards;
+}
+
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

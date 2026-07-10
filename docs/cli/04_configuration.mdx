@@ -1,0 +1,209 @@
+---
+id: configuration
+title: ⚙️ Configuration
+description: Configure Fetch Client CLI using environment variables and command-line options.
+sidebar_position: 4
+slug: /cli/configuration
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+You can configure Fetch Client CLI with environment variables. These tell the CLI where to find your Fetch Client database, and how to decrypt encrypted variables if you use them.
+
+If you are using the CLI with the VS Code extension, these configurations are not required. They are only needed when running the CLI as a standalone application or as part of a CI/CD pipeline.
+
+## 📖 How Configuration Is Applied
+
+Fetch Client CLI checks settings in this order:
+
+1. Command-line options _(if you provide them)_
+2. Environment variables
+3. Default Fetch Client database location
+
+This lets you override a setting temporarily, without changing anything on your system.
+
+## 🌍 Environment Variables
+
+| Variable                | What it does                                       |
+| ----------------------- | -------------------------------------------------- |
+| `FC_DB_PATH`            | Sets the path to your Fetch Client database folder |
+| `FC_ENCRYPTION_ENABLED` | Turns on support for encrypted variables           |
+| `FC_ENCRYPTION_KEY`     | The key used to decrypt encrypted variables        |
+
+### 📂 FC_DB_PATH
+
+Use `FC_DB_PATH` when your Fetch Client database lives in a custom location.
+
+<Tabs>
+<TabItem value="windows" label="Windows">
+
+```powershell
+$env:FC_DB_PATH="D:\FetchClient\Data"
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux/macOS">
+
+```bash
+export FC_DB_PATH="/home/user/fetch-client"
+```
+
+</TabItem>
+</Tabs>
+
+Once set, every CLI command uses that database.
+
+:::tip
+If you don't set `FC_DB_PATH`, Fetch Client CLI uses the default database location automatically.
+:::
+
+### 🔐 FC_ENCRYPTION_ENABLED
+
+Turn this on if your Fetch Client has encrypted variables.
+
+<Tabs>
+<TabItem value="windows" label="Windows">
+
+```powershell
+$env:FC_ENCRYPTION_ENABLED="true"
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux/macOS">
+
+```bash
+export FC_ENCRYPTION_ENABLED=true
+```
+
+</TabItem>
+</Tabs>
+
+When this is on, the CLI also needs a valid encryption key.
+
+### 🗝️ FC_ENCRYPTION_KEY
+
+Set the key used to decrypt your encrypted variables.
+
+<Tabs>
+<TabItem value="windows" label="Windows">
+
+```powershell
+$env:FC_ENCRYPTION_KEY="your-encryption-key"
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux/macOS">
+
+```bash
+export FC_ENCRYPTION_KEY="your-encryption-key"
+```
+
+</TabItem>
+</Tabs>
+
+:::warning
+Never commit your encryption key to source control or put it in a public repository. Use your CI/CD platform's secret manager instead.
+:::
+
+## 📝 Example Configuration
+
+### 🪟 Windows
+
+```powershell
+$env:FC_DB_PATH="D:\FetchClient\Data"
+$env:FC_ENCRYPTION_ENABLED="true"
+$env:FC_ENCRYPTION_KEY="your-secret-key"
+
+fc-cli --version
+```
+
+### 🐧 Linux
+
+```bash
+export FC_DB_PATH="/home/user/fetch-client"
+export FC_ENCRYPTION_ENABLED=true
+export FC_ENCRYPTION_KEY="your-secret-key"
+
+fc-cli --version
+```
+
+### 🍎 macOS
+
+```bash
+export FC_DB_PATH="/Users/john/FetchClient"
+export FC_ENCRYPTION_ENABLED=true
+export FC_ENCRYPTION_KEY="your-secret-key"
+
+fc-cli --version
+```
+
+## 📍 Default Database Location
+
+If you don't set `FC_DB_PATH`, Fetch Client CLI uses this default location automatically:
+
+| Platform | Default Location                                                                     |
+| -------- | ------------------------------------------------------------------------------------ |
+| Windows  | `%APPDATA%\Code\User\globalStorage\ganesanchandran.fetch-client`                     |
+| Linux    | `~/.config/Code/User/globalStorage/ganesanchandran.fetch-client`                     |
+| macOS    | `~/Library/Application Support/Code/User/globalStorage/ganesanchandran.fetch-client` |
+
+:::tip
+Most users don't need to change this. Fetch Client CLI reads from the same storage location the VS Code extension already uses.
+:::
+
+## 📁 Using a Custom Database
+
+If you've set the Fetch Client extension to store data in a custom location, set `FC_DB_PATH` so the CLI uses the same folder.
+
+```bash
+FC_DB_PATH=/workspace/project-a fc-cli run --col --name <name>
+```
+
+Switch to a different workspace anytime:
+
+```bash
+FC_DB_PATH=/workspace/project-b fc-cli run --col --name <name>
+```
+
+This makes it easy to automate multiple projects without touching your main Fetch Client workspace.
+
+## 🤖 CI/CD Configuration
+
+When you run Fetch Client CLI in a CI/CD pipeline, set environment variables through your platform's secret manager.
+
+A typical setup:
+
+1. Store the encryption key as a secret.
+2. Set `FC_DB_PATH`.
+3. Turn on encryption, if you need it.
+4. Run Fetch Client CLI.
+
+:::tip
+Don't hardcode encryption keys in pipeline scripts.
+:::
+
+## 🛠️ Troubleshooting
+
+### ❌ Database Not Found
+
+If the CLI can't find your Fetch Client database:
+
+- Check the `FC_DB_PATH` value.
+- Make sure the folder exists.
+- Confirm your user account has read access.
+
+### 🔑 Invalid Encryption Key
+
+If encrypted variables won't decrypt:
+
+- Check that `FC_ENCRYPTION_ENABLED` is set to `true`.
+- Confirm `FC_ENCRYPTION_KEY` matches the key used in the Fetch Client extension.
+
+### ⚠️ Environment Variable Not Applied
+
+If a change doesn't seem to take effect:
+
+- Restart your terminal.
+- Open a new command prompt or shell.
+- Double-check the variable is set correctly.

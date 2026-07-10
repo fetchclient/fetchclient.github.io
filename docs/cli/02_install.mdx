@@ -1,0 +1,141 @@
+---
+id: installation
+title: 📦 Installation
+description: Install, update, and uninstall Fetch Client CLI on Windows, macOS, and Linux.
+sidebar_position: 2
+slug: /cli/installation
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Fetch Client CLI is an npm package. You can install it on any system that runs Node.js.
+
+Once installed, you can use the `fc-cli` command in your terminal to run requests, collections and tests.
+
+## 📋 Prerequisites
+
+Check that your system meets these requirements before you install.
+
+| Requirement      | Version                  |
+| ---------------- | ------------------------ |
+| Node.js          | 18.x or later            |
+| npm              | 9.x or later             |
+| Operating System | Windows, macOS, or Linux |
+
+Check your current versions:
+
+```bash
+node --version
+npm --version
+```
+
+:::tip
+Use the latest LTS version of Node.js for the best compatibility and performance.
+:::
+
+## ⬇️ Install Fetch Client CLI
+
+Install the latest version globally with npm:
+
+```bash
+npm install -g @fetch-client/cli
+```
+
+Check that it installed correctly:
+
+```bash
+fc-cli --version
+```
+
+Example output:
+
+```text
+1.0.0
+```
+
+## 🔖 Install a Specific Version
+
+To install a specific version, run:
+
+```bash
+npm install -g @fetch-client/cli@1.0.0
+```
+
+This is useful if your project needs a particular CLI version.
+
+## ⬆️ Update the CLI
+
+Update to the latest version:
+
+```bash
+npm update -g @fetch-client/cli
+```
+
+Or reinstall the latest version directly:
+
+```bash
+npm install -g @fetch-client/cli@latest
+```
+
+Then check the version:
+
+```bash
+fc-cli --version
+```
+
+## 📍 Find the Installation Path
+
+<Tabs>
+<TabItem value="windows" label="Windows">
+
+```powershell
+where fc-cli
+```
+
+</TabItem>
+<TabItem value="mac" label="macOS">
+
+```bash
+which fc-cli
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+which fc-cli
+```
+
+</TabItem>
+</Tabs>
+
+## 📂 Check the npm Global Directory
+
+Sometimes the CLI installs correctly, but your system's `PATH` doesn't include the npm global folder.
+
+Check where npm installs global packages:
+
+```bash
+npm root -g
+```
+
+Example:
+
+```text
+C:\Users\<username>\AppData\Roaming\npm\node_modules
+```
+
+Check where npm puts the executable:
+
+```bash
+npm bin -g
+```
+
+Example:
+
+```text
+C:\Users\<username>\AppData\Roaming\npm
+```
+
+Make sure this folder is in your system's `PATH`.

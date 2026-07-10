@@ -1,0 +1,85 @@
+---
+id: introduction
+title: 🚀 Fetch Client CLI
+description: Learn about Fetch Client CLI, its features, and how to automate API testing from the command line.
+sidebar_position: 1
+slug: /cli/introduction
+---
+
+**Fetch Client CLI** is a command-line tool. It lets you run requests, folders, and collections from the Fetch Client VS Code extension - without opening VS Code.
+
+It is built for developers, testers and CI/CD pipelines. Use it when you need a fast, light and scriptable way to run API requests.
+
+You can use Fetch Client CLI to test APIs during development, run automated tests, create reports, or run load tests. It gives you the same features as the extension, right from your terminal.
+
+## ❓ Why use Fetch Client CLI?
+
+Many development workflows need API testing outside an IDE. Fetch Client CLI lets you:
+
+- Run API requests from the terminal
+- Run full collections
+- Automate API testing in CI/CD pipelines
+- Generate reports
+- Check API responses
+- Run performance tests
+- Use environments and variables
+- Reuse data you already built in the Fetch Client extension
+
+You don't need separate collections for your IDE and your automation. The CLI works directly with your existing Fetch Client database.
+
+:::tip One Source of Truth
+The CLI and the VS Code extension share the same database. Any change you make in one shows up in the other right away.
+:::
+
+## ✨ Key Features
+
+| Feature         | What it does                                                             |
+| --------------- | ------------------------------------------------------------------------ |
+| Run Requests    | Runs a single request                                                    |
+| Run Folders     | Runs every request inside a folder                                       |
+| Run Collections | Runs an entire collection                                                |
+| Variables       | Use global, collection, and environment variables                        |
+| Pre-Requests    | Runs dependent (PreFetch) requests automatically before the main request |
+| Tests           | Checks that API responses are correct                                    |
+| Reporting       | Creates JSON, XML, HTML and NUnit reports                                |
+| CI/CD Support   | Works with GitHub Actions, Azure DevOps, Jenkins, GitLab CI, and more    |
+| Cross Platform  | Runs on Windows, macOS, and Linux                                        |
+
+## ⚙️ How It Works
+
+The CLI reads the same database as the VS Code extension. This means you can switch between the two anytime - nothing needs to be copied or re-created.
+
+```text
+                    +----------------------+
+                    |    Fetch Client       |
+                    |  VS Code Extension    |
+                    +----------+-----------+
+                               |
+                     Shared Database Files
+                               |
+            +------------------+------------------+
+            |                                     |
++-----------v-----------+              +----------v-----------+
+|   Fetch Client CLI     |              |   VS Code Extension   |
+|                        |              |                       |
+| Run Requests           |              | Create Requests       |
+| Run Collections        |              | Edit Requests         |
+| Run Performance Tests  |              | Manage Variables      |
+| Generate Reports       |              | Organize Collections  |
++------------------------+              +-----------------------+
+```
+
+## 🔄 A Typical Workflow
+
+1. Create requests in the Fetch Client VS Code extension.
+2. Organize them into folders and collections.
+3. Set up variables and environments.
+4. Test requests interactively.
+5. Run the same collection with Fetch Client CLI.
+6. Generate a report.
+7. Add the CLI to your CI/CD pipeline.
+
+```text
+Create Request → Configure Variables → Link Pre-Requests
+     → Add Tests → Run Using fc-cli → Generate Report
+```

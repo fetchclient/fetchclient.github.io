@@ -1,0 +1,144 @@
+---
+id: getting-started
+title: 🚀 Getting Started
+description: Learn how to configure Fetch Client CLI and execute your first request.
+sidebar_position: 3
+slug: /cli/getting-started
+---
+
+## ✅ Before You Begin
+
+Make sure you have:
+
+- Installed **Fetch Client CLI**
+- Installed the **Fetch Client VS Code extension**
+- Created at least one collection with a request
+
+If you haven't installed the CLI yet, see the [**Installation**](./02_install.mdx) guide.
+
+## ⚙️ How Fetch Client CLI Works
+
+Many API CLI tools make you import collections into a separate workspace. Fetch Client CLI skips that step - it reads directly from the same database as the Fetch Client VS Code extension.
+
+```text
+                Fetch Client Extension
+                        │
+                Shared Database
+                        │
+        ┌───────────────┴───────────────┐
+        │                               │
+        ▼                               ▼
+ VS Code Extension               Fetch Client CLI
+```
+
+This means:
+
+- No export or import needed
+- Your collections stay in sync
+- Variables and environments are shared
+- Changes in the extension show up in the CLI right away
+
+:::tip
+Create and organize your requests in the Fetch Client extension. Then automate them with Fetch Client CLI.
+:::
+
+## 1️⃣ Step 1: Check the Installation
+
+Open a terminal and confirm the CLI is installed.
+
+```bash
+fc-cli --version
+```
+
+Example output:
+
+```text
+1.0.0
+```
+
+You can also see all available commands.
+
+```bash
+fc-cli --help
+```
+
+<div align="center">
+  <img src="/img/cli/fcversion.png?raw=true" alt="fc-cli version" />
+</div>
+
+## 2️⃣ Step 2: Find Your Fetch Client Database
+
+By default, Fetch Client stores its data locally. The CLI automatically uses the same database as the extension. Use below command to check if all required DB files exist.
+
+```bash
+fc-cli check
+```
+
+<div align="center">
+  <img src="/img/cli/fccheck.png?raw=true" alt="fc-cli check" />
+</div>
+
+## 3️⃣ Step 3: List Your Collections
+
+See the collections in your workspace.
+
+```bash
+fc-cli list --col
+```
+
+<div align="center">
+  <img src="/img/cli/fc-list-col.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+:::info
+See the [List](./06_list.mdx) command documentation for more details and the available list types.
+:::
+
+## 4️⃣ Step 4: Run Your First Request
+
+Run a request by name.
+
+```bash
+fc-cli run --req --id <req_id>
+```
+
+<div align="center">
+  <img src="/img/cli/fc-run-req.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+:::info
+See the [Run](./07_run.mdx) command documentation for more details and the available list types.
+:::
+
+## 5️⃣ Step 5: Use Environment Variables
+
+Run requests with a specific environment variable.
+
+```bash
+fc-cli run --req --id <req_id> --var-name <variable_name>
+
+```
+
+<div align="center">
+  <img src="/img/cli/fc-run-req-var.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+**Note:** If the collection or request being executed is linked to a variable, the CLI automatically applies that linked variable to every request in the run. Otherwise, it uses the variable specified in the command.
+
+## 6️⃣ Step 6: Pre-Requests Run Automatically
+
+If a request has **Pre-Requests** set up, Fetch Client CLI runs them first, before the main request.
+
+<div align="center">
+  <img src="/img/cli/fc-run-req-pre.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+You don't need any extra CLI options for this.
+
+:::note
+Pre-Requests run based on how the request is configured in the Fetch Client extension.
+:::

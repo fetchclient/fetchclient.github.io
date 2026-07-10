@@ -1,0 +1,28 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "file": "./.spelling",
+      "addWords": true
+    }
+  ],
+  "dictionaries": ["project-words", "node", "bash"],
+  "ignorePaths": ["node_modules", "build", ".docusaurus", "pnpm-lock.yaml"],
+  "patterns": [
+    {
+      "name": "code-blocks",
+      "pattern": "```[\\s\\s]*```"
+    },
+    {
+      "name": "inline-code-blocks",
+      "pattern": "`.*`"
+    },
+    {
+      "name": "img-tags",
+      "pattern": "<img\\b[^>]*>"
+    }
+  ],
+  "ignoreRegExpList": ["code-blocks", "inline-code-blocks", "img-tags"]
+}

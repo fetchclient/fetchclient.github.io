@@ -1,0 +1,165 @@
+---
+id: ci-cd-integration
+title: 🤖 CI/CD Integration
+description: Integrate Fetch Client CLI into your CI/CD pipelines to automate API testing and validation.
+sidebar_position: 8
+slug: /cli/ci-cd-integration
+---
+
+Fetch Client CLI is designed to work seamlessly with Continuous Integration and Continuous Deployment (CI/CD) pipelines.
+
+You can use it to automate API validation, execute regression suites, verify deployments, and generate test reports as part of your build or release process.
+
+Common CI/CD platforms include:
+
+- GitHub Actions
+- Azure DevOps
+- GitLab CI/CD
+- Jenkins
+
+## ✅ Before You Begin
+
+Ensure that:
+
+- Fetch Client CLI is installed on the build agent.
+- The Fetch Client data directory is available.
+- Environment variables (if required) are configured.
+
+## 🐙 GitHub Actions
+
+```yaml
+name: API Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      FC_DB_PATH: ./fetch-client-db
+      FC_ENCRYPTION_ENABLED: true # If variables are encrypted
+      FC_ENCRYPTION_KEY: ${{ secrets.FC_ENCRYPTION_KEY }} # If variables are encrypted
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Fetch Client CLI
+        run: npm install -g @fetch-client/cli
+
+      - name: Verify Fetch Client Data
+        run: fc-cli check
+
+      - name: Run Regression Tests
+        run: |
+          fc-cli run \
+            --col \
+            --name "Regression Tests" \
+            --export html \
+            --export-path ./reports
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: fetch-client-report
+          path: ./reports
+          if-no-files-found: error
+```
+
+## 🔷 Azure DevOps
+
+```yaml
+variables:
+  FC_DB_PATH: $(Build.SourcesDirectory)/fetch-client-db
+  FC_ENCRYPTION_ENABLED: true
+  FC_ENCRYPTION_KEY: $(FC_ENCRYPTION_KEY)
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "22.x"
+
+  - script: npm install -g @fetch-client/cli
+    displayName: Install Fetch Client CLI
+
+  - script: fc-cli check
+    displayName: Verify Fetch Client Data
+    env:
+      FC_DB_PATH: $(FC_DB_PATH)
+      FC_ENCRYPTION_ENABLED: $(FC_ENCRYPTION_ENABLED)
+      FC_ENCRYPTION_KEY: $(FC_ENCRYPTION_KEY)
+
+  - script: |
+      fc-cli run \
+        --col \
+        --all \
+        --export nunit
+    displayName: Run API Tests
+    env:
+      FC_DB_PATH: $(FC_DB_PATH)
+      FC_ENCRYPTION_ENABLED: $(FC_ENCRYPTION_ENABLED)
+      FC_ENCRYPTION_KEY: $(FC_ENCRYPTION_KEY)
+```
+
+## 🦊 GitLab CI/CD
+
+```yaml
+stages:
+  - test
+
+variables:
+  FC_DB_PATH: "./fetch-client-db"
+  FC_ENCRYPTION_ENABLED: "true"
+  FC_ENCRYPTION_KEY: "$FC_ENCRYPTION_KEY"
+
+api-tests:
+  image: node:22
+
+  script:
+    - npm install -g @fetch-client/cli
+    - fc-cli check
+    - fc-cli run --col --all --export json
+```
+
+## ☕ Jenkins
+
+```groovy
+pipeline {
+    agent any
+
+    environment {
+        FC_DB_PATH = "${WORKSPACE}/fetch-client-db"
+        FC_ENCRYPTION_ENABLED = "true"
+        FC_ENCRYPTION_KEY = credentials('FC_ENCRYPTION_KEY')
+    }
+
+    stages {
+
+        stage('Install') {
+            steps {
+                sh 'npm install -g @fetch-client/cli'
+            }
+        }
+
+        stage('Check') {
+            steps {
+                sh 'fc-cli check'
+            }
+        }
+
+        stage('API Tests') {
+            steps {
+                sh 'fc-cli run --col --all --export html'
+            }
+        }
+    }
+}
+```

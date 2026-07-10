@@ -1,0 +1,243 @@
+---
+id: run
+title: ▶️ Run
+description: Execute requests, folders, collections, or raw cURL commands using Fetch Client CLI.
+sidebar_position: 7
+slug: /cli/run
+---
+
+The `run` command executes requests stored in your Fetch Client data directory. Depending on the options you use, you can run:
+
+- A single request
+- Every request in a folder
+- Every request in a collection
+- Every request in every collection
+- A raw cURL command
+
+While it runs, Fetch Client CLI automatically:
+
+- Resolves variables
+- Runs any configured Pre-Requests
+- Sends the HTTP request
+- Runs Tests
+- Shows the result
+- Generates reports (optional)
+
+## 💻 Syntax
+
+```bash
+fc-cli run [options]
+```
+
+### ⚙️ Options
+
+| Option          | What it does                      |
+| --------------- | --------------------------------- |
+| `--req`         | Run a request                     |
+| `--fol`         | Run a folder                      |
+| `--col`         | Run a collection                  |
+| `--curl`        | Run a raw cURL command            |
+| `--name`        | Find the resource by name         |
+| `--id`          | Find the resource by ID           |
+| `--all`         | Run every collection/folder       |
+| `--var-id`      | Override the Variable Set by id   |
+| `--var-name`    | Override the Variable Set by name |
+| `--export`      | Export the run results            |
+| `--export-path` | Folder where reports get saved    |
+
+## 📖 Run Commands
+
+| Action                             | Command                                                                 |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| Run a request by name              | `fc-cli run --req --name "Get Users"`                                   |
+| Run a request by ID                | `fc-cli run --req --id <request-id>`                                    |
+| Run a folder by name               | `fc-cli run --fol --name "Authentication"`                              |
+| Run a folder by ID                 | `fc-cli run --fol --id <folder-id>`                                     |
+| Run a collection by name           | `fc-cli run --col --name "Regression Tests"`                            |
+| Run a collection by ID             | `fc-cli run --col --id <collection-id>`                                 |
+| Run every collection               | `fc-cli run --col --all`                                                |
+| Run a raw cURL command             | `fc-cli run --curl "curl https://api.example.com/users"`                |
+| Override Variable Set by name      | `fc-cli run --req --name "Login" --var-name "QA Variables"`             |
+| Override Variable Set by ID        | `fc-cli run --req --name "Login" --var-id <variable-set-id>`            |
+| Run a folder with a Variable       | `fc-cli run --fol --name "Authentication" --var-name "QA Variables"`    |
+| Run a collection with a Variable   | `fc-cli run --col --name "Regression Tests" --var-id <variable-set-id>` |
+| Export an HTML report              | `fc-cli run --col --name "Regression Tests" --export html`              |
+| Export a JSON report               | `fc-cli run --col --name "Regression Tests" --export json`              |
+| Export an XML report               | `fc-cli run --col --all --export xml`                                   |
+| Export a report to a custom folder | `fc-cli run --col --all --export json --export-path "D:\Reports"`       |
+
+## 📨 Run a Request
+
+Run a single request by name.
+
+```bash
+fc-cli run --req --name "Get Users"
+```
+
+Or run it by its unique ID.
+
+```bash
+fc-cli run --req --id <request-id>
+```
+
+<div align="center">
+  <img src="/img/cli/fc-run-req.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+## 📂 Run a Folder
+
+Run every request in a folder.
+
+```bash
+fc-cli run --fol --name "Authentication"
+```
+
+or
+
+```bash
+fc-cli run --fol --id <folder-id>
+```
+
+<div align="center">
+  <img src="/img/cli/fc-run-fol.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+Requests run one after another, in the same order they appear in the Fetch Client extension.
+
+## 📚 Run a Collection
+
+Run every request in a collection.
+
+```bash
+fc-cli run --col --name "Regression Tests"
+```
+
+or
+
+```bash
+fc-cli run --col --id <collection-id>
+```
+
+<div align="center">
+  <img src="/img/cli/fc-run-col.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+## 🚀 Run All Collection
+
+Run every request across every collection.
+
+```bash
+fc-cli run --col --all
+```
+
+## 🌐 Run a Raw cURL Command
+
+Run a raw cURL command without importing it into Fetch Client first.
+
+```bash
+fc-cli run --curl "curl https://api.example.com/users"
+```
+
+## 🔄 Override the Variable
+
+By default, a request uses the Variable linked to it in Fetch Client. You can override this temporarily when you run it.
+
+Using a variable id:
+
+```bash
+fc-cli run --req --name "Login" --var-id <variable-set-id>
+```
+
+Using a variable name:
+
+```bash
+fc-cli run --req --name "Login" --var-name "QA Variables"
+```
+
+The same options work for folders and collections.
+
+```bash
+fc-cli run --fol --name "Authentication" --var-name "QA Variables"
+```
+
+```bash
+fc-cli run --col --name "Regression Tests" --var-id <variable-set-id>
+```
+
+:::warning Variable set priority
+If a collection or folder already has a linked Variable Set, that linked set always wins. In that case, `--var-id` and `--var-name` are ignored, and the CLI shows a message telling you so.
+:::
+
+## 🔗 Pre-Requests
+
+If a request has one or more Pre-Requests set up, Fetch Client CLI runs them automatically, before the main request.
+
+Use Pre-Requests to:
+
+- Authenticate users
+- Generate access tokens
+- Prepare test data
+- Run dependent requests
+
+You don't need any extra command-line options for this.
+
+<div align="center">
+  <img src="/img/cli/fc-run-req-pre.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+## ✅ Tests
+
+After each request finishes, Fetch Client CLI runs any Tests attached to it.
+
+<div align="center">
+  <img src="/img/cli/fc-tests.png?raw=true" alt="fc-cli col" />
+</div>
+<br />
+
+## 📊 Export Reports
+
+Use `--export` to generate a report after the run finishes.
+
+Supported formats:
+
+- HTML
+- JSON
+- CSV
+- XML
+- NUnit
+
+Export a report for a single request:
+
+```bash
+fc-cli run --req --name "Login" --export html
+```
+
+Export a report for a collection:
+
+```bash
+fc-cli run --col --name "Regression Tests" --export json
+```
+
+Export a report for every collection:
+
+```bash
+fc-cli run --col --all --export xml
+```
+
+### 📁 Export to a Custom Folder
+
+Use `--export-path` to choose where reports get saved.
+
+```bash
+fc-cli run --col --all --export json --export-path "D:\Reports"
+```
+
+:::note
+`--export-path` must point to a folder that already exists.
+
+If you leave it out, reports go to a **fetch-client-exports** folder next to your Fetch Client data directory.
+:::

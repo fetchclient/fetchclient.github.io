@@ -1,0 +1,78 @@
+---
+id: list
+title: 📋 List
+description: List collections, folders, and variable sets available in Fetch Client.
+sidebar_position: 6
+slug: /cli/list
+---
+
+The `list` command displays collections, folders, and variables stored in the Fetch Client data directory.
+
+It helps you discover available resources before executing other commands such as `run`.
+
+The `list` command supports filtering by **id** or **name**, making it easy to locate specific resources.
+
+## 💻 Syntax
+
+```bash
+fc-cli list [options]
+```
+
+### ⚙️ Options
+
+| Option          | Description             |
+| --------------- | ----------------------- |
+| `--col`         | List collections        |
+| `--fol`         | List folders            |
+| `--var`         | List Variable Sets      |
+| `--name <name>` | Filter by resource name |
+| `--id <uuid>`   | Filter by resource ID   |
+
+## 📝 Examples
+
+### 📚 Display All Collections
+
+```bash
+fc-cli list --col
+```
+
+<div align="center">
+  <img src="/img/cli/fc-list-col.png?raw=true" alt="fc-cli check" />
+</div>
+<br />
+
+### 🔎 Find a Collection by Name
+
+```bash
+fc-cli list --col --name "Sample"
+```
+
+<div align="center">
+  <img src="/img/cli/fc-list-col-name.png?raw=true" alt="fc-cli check" />
+</div>
+<br />
+
+### 🆔 Find a Collection by ID
+
+```bash
+fc-cli list --col --id 7f12419c-91c8-44d0-a8e5-cb351dd287e3
+```
+
+<div align="center">
+  <img src="/img/cli/fc-list-col-id.png?raw=true" alt="fc-cli check" />
+</div>
+<br />
+
+## 📖 List Commands
+
+| Command                           | Description                                        |
+| --------------------------------- | -------------------------------------------------- |
+| `fc-cli list --col`               | List all collections.                              |
+| `fc-cli list --col --id <uuid>`   | Display the collection with the specified ID.      |
+| `fc-cli list --col --name <name>` | Display collections matching the specified name.   |
+| `fc-cli list --fol`               | List all folders.                                  |
+| `fc-cli list --fol --id <uuid>`   | Display the folder with the specified ID.          |
+| `fc-cli list --fol --name <name>` | Display folders matching the specified name.       |
+| `fc-cli list --var`               | List all variable sets.                            |
+| `fc-cli list --var --id <uuid>`   | Display the variable set with the specified ID.    |
+| `fc-cli list --var --name <name>` | Display variable sets matching the specified name. |

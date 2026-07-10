@@ -1,0 +1,56 @@
+---
+slug: /extension/features/advanced/auto-requests
+---
+
+# Auto Requests (Scheduled Requests)
+
+## 🚀 Overview
+
+Auto Requests lets you run API requests on a schedule. It is useful when you want to test an API for a longer time without sending requests by hand.
+
+## ✨ Key Features
+
+    * Run requests automatically on a timer
+    * Set interval and total run time
+    * Pick requests from your collections
+    * Run up to 5 requests at the same time
+    * Easy and clean user interface
+
+## 🧭 How It Works
+
+    1. Select a collection.
+    2. Select a request from that collection.
+    3. Set:
+        * Interval: how often the request runs
+        * Duration: how long the request keeps running
+    4. Select Enable.
+
+The system then sends the request based on your settings.
+
+<div align="center">
+  <img src="/img/autorequest-menu.png?raw=true" alt="Auto Request menu" />
+  <br />
+</div>
+
+## ⚙️ Configuration Options
+
+    * Interval (minutes) - Time between each request run
+    * Duration (minutes) - Total time the request will run
+    * Multi-Request Support - You can add up to 5 requests
+
+<div align="center">
+  <img src="/img/autorequest.png?raw=true" alt="Auto Request" width="850" />
+  <br />
+</div>
+
+## 📌 Execution Logic
+
+    * A request runs again and again based on the interval.
+    * It stops automatically when duration ends.
+
+## ⚠️ Important Notes
+
+- Maximum 5 requests can run at one time.
+- Do not use PreFetch requests inside Auto Requests.
+- PreFetch requests are not executed if available.
+- Invalid inputs are highlighted in the UI.

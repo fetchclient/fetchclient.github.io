@@ -1,0 +1,52 @@
+---
+slug: /extension/features/curl
+---
+
+# cURL
+
+The cURL feature allows you to import and run cURL commands directly in Fetch Client. This makes it easy to test APIs using existing cURL commands without having to recreate requests manually.
+
+## 🔄 Import cURL Commands
+
+You can convert any cURL command into a Fetch Client request. This is helpful when you have cURL commands from API documentation or examples and want to use them in Fetch Client.
+
+**How to import:**
+
+1. Click on the "Import cURL" option in the menu
+2. Paste your cURL command
+3. Fetch Client will automatically convert it to a request
+
+The import feature supports standard cURL syntax, including headers, request methods, and data parameters.
+
+<div align="center">
+  <img src="/img/import-curl-menu.png?raw=true" alt="Import Curl Menu" />
+  <br />
+  <img src="/img/import-curl.png?raw=true" alt="Import Curl" width="650" />
+</div>
+
+## ⚡ Execute cURL Commands
+
+You can also run cURL commands directly without converting them to Fetch Client format. This is useful when you want to quickly test a cURL command as-is.
+
+**How to execute:**
+
+1. Paste your cURL command in the input area
+2. Click the "Run" button
+3. View the response immediately
+
+This direct execution option saves time when you need to test cURL commands quickly.
+
+<div align="center">
+  <img src="/img/curl-run.png?raw=true" alt="Run Curl Command" width="650" />
+</div>
+
+## ✅ Supported Features
+
+The cURL feature works with:
+
+- All HTTP methods (GET, POST, PUT, DELETE, etc.)
+- Custom headers
+- Request body data
+- Query parameters
+- Authentication options
+- Standard cURL flags and options

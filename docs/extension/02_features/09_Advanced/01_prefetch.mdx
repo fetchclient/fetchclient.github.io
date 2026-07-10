@@ -1,0 +1,58 @@
+---
+slug: /extension/features/advanced/pre-requests
+---
+
+# Pre-Requests (PreFetch)
+
+Pre-requests allow you to run setup requests automatically before your main API call executes. This feature helps you prepare the environment, authenticate, or fetch required data before testing your primary endpoint.
+
+## 🎯 What are Pre-Requests?
+
+Pre-requests are API calls that run before your main request. They help you:
+
+- Set up authentication tokens
+- Fetch dynamic data needed for your main request
+- Prepare test environments
+- Chain multiple API calls together
+
+<div align="center">
+  <img src="/img/prefetch.png?raw=true" alt="Pre-requests" width="650" />
+  <br />
+  <sup>
+    <b>PreFetch Requests</b>
+  </sup>
+</div>
+<br />
+<br />
+<div align="center">
+  <img
+    src="/img/prefetch-results.png?raw=true"
+    alt="Pre-requests"
+    width="650"
+  />
+  <br />
+  <sup>
+    <b>PreFetch Response</b>
+  </sup>
+</div>
+
+## ✨ Key Features
+
+### Multi-level Setup
+
+You can configure pre-requests at three different levels:
+
+- **Request Level** - Run before a specific request
+- **Folder Level** - Run before any request in a folder
+- **Collection Level** - Run before any request in the collection
+
+### Conditional Execution
+
+Control when pre-requests run by setting up conditions. Pre-requests will only execute when your specified conditions are met.
+
+## 💡 Common Use Cases
+
+- **Authentication** - Get an access token before making protected API calls
+- **Data Preparation** - Create or fetch test data needed for your request
+- **Environment Setup** - Initialize session data or temporary resources
+- **Request Chaining** - Use response data from one request in another

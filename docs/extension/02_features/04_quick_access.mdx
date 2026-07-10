@@ -1,0 +1,249 @@
+---
+slug: /extension/features/quick-access
+---
+
+# Quick Access
+
+The Quick Access sidebar helps you work faster by keeping your requests organized and easy to reuse. It has three main sections: History, Collections, and Environment Variables.
+
+## 📜 History
+
+Every request you send is automatically saved to your history. You never lose track of what you tested.
+
+### History
+
+- **Auto-Save** - All requests are saved automatically when you send them.
+- **Quick Reuse** - Load any previous request with one click.
+- **Save to Collection** - Move important requests from history to permanent collections.
+- **Bulk Delete** - Clean up your history when it gets too long.
+
+<br />
+<div
+  align="center"
+  style={{ display: "flex", justifyContent: "center", gap: "20px" }}
+>
+  <div style={{ textAlign: "center" }}>
+    <img
+      src="/img/history-folder.png?raw=true"
+      alt="History Tab (Folder View)"
+      width="210"
+    />
+    <br />
+    <sup>
+      <b>History Tab (Folder View)</b>
+    </sup>
+  </div>
+  <div style={{ textAlign: "center" }}>
+    <img
+      src="/img/history-list.png?raw=true"
+      alt="History Tab (List View)"
+      width="230"
+      height="350"
+    />
+    <br />
+    <sup>
+      <b>History Tab (List View)</b>
+    </sup>
+  </div>
+</div>
+
+## 📋 Collections
+
+Collections help you organize related API requests into groups. Think of them as folders for your requests.
+
+<div align="center">
+  <img
+    src="/img/collection.png?raw=true"
+    alt="Collection Tab"
+    width="230"
+    height="500"
+  />
+</div>
+
+### Request Organization
+
+Create folders and collections to keep everything organized.
+
+**How to organize:**
+
+1. Click **New Collection** in the Collections tab
+2. Give your collection a name (e.g., "User API", "Payment Endpoints")
+3. Add requests to the collection
+4. Create sub-folders for better organization
+
+### Batch Operations
+
+Run all requests in a collection with one click.
+
+**How to run all:**
+
+1. Right-click on a collection
+2. Select **Tools -> Run All**
+3. All requests run in order
+4. See results for each request
+
+**Learn more:** See [Run All Requests](../02_features/09_Advanced/02_runall.mdx) for advanced options.
+
+### Variable Linking
+
+Attach specific variables to a collection.
+
+**How it works:**
+
+- Collections can have their own environment variables
+- These variables only work within that collection
+- Override global variables when needed
+
+<div align="center">
+  <img
+    src="/img/attach-variable.png?raw=true"
+    alt="Collection Tab"
+    width="250"
+    height="450"
+  />
+</div>
+
+### Arrange Items
+
+### Export and Import
+
+Share collections with your team or back them up.
+
+**How to export:**
+
+1. Right-click on a collection
+2. Select **Export**
+3. Choose where to save the JSON file
+4. Share the file with your team
+
+:::info
+
+**Supported formats:**
+
+- **Fetch Client** - Native format v2 (recommended)
+- **Postman** - v2.1
+
+:::
+
+<div align="center">
+  <img src="/img/export-col.png?raw=true" alt="Export Collection" />
+  <br />
+  <sup>
+    <b>Export single collection</b>
+  </sup>
+  <br />
+  <br />
+  <img
+    src="/img/bulk-export-col-menu.png?raw=true"
+    alt="Bulk Export Collection"
+  />
+  <br />
+  <sup>
+    <b>Bulk Export Menu</b>
+  </sup>
+  <br />
+  <br />
+  <img
+    src="/img/bulk-export-col.png?raw=true"
+    alt="Bulk Export Collection"
+    width="750"
+  />
+  <br />
+  <sup>
+    <b>Bulk Export</b>
+  </sup>
+</div>
+
+**How to import:**
+
+1. Open the Collections tab
+2. Click the menu icon (⋮)
+3. Select **Import**
+4. Choose your collection file
+5. The collection appears in your sidebar
+
+:::info
+
+**Supported formats:**
+
+- **Fetch Client** - Native format v1 and v2 (recommended)
+- **Postman** - v2.1
+- **Thunder Client** - v1.2
+- **Insomina** - v4 and v5
+- **Open API** - v3 (JSON or YAML)
+
+:::
+
+<div align="center">
+  <img
+    src="/img/import-col-menu.png?raw=true"
+    alt="Import collection dialog showing supported formats"
+  />
+</div>
+
+### Collection Settings
+
+Override settings for an entire collection.
+
+**What you can override:**
+
+- **Authentication** - Apply the same auth to all requests
+- **Headers** - Add common headers to every request
+- **Pre-request scripts** - Run code before each request
+
+**How to configure:**
+
+1. Right-click on a collection
+2. Select **Settings**
+3. Configure collection-level options
+4. Individual requests can still override these settings
+
+<div align="center">
+  <img
+    src="/img/col-settings.png?raw=true"
+    alt="Collection Settings"
+    width="750"
+  />
+  <br />
+</div>
+
+## 🌐 Environment Variables
+
+Variables let you reuse values across multiple requests. Change one variable, and it updates everywhere you use it.
+
+### What Are Variables?
+
+Variables are placeholders for values that might change.
+
+**Why use variables:**
+
+- **Avoid repetition** - Write the API URL once, use it everywhere
+- **Easy switching** - Change from dev to production with one click
+- **Team collaboration** - Everyone uses the same variable names
+- **Security** - Keep sensitive data in variables instead of requests
+
+**How to use:**
+
+Write `{{variableName}}` anywhere in your request:
+
+- URLs: `{{baseUrl}}/users/{{userId}}`
+- Headers: `Authorization: Bearer {{token}}`
+- Query params: `api_key={{apiKey}}`
+- Request body: `{"email": "{{userEmail}}"}`
+
+### Multi-Scope Variables
+
+Variables can be set at different levels. More specific levels override general ones.
+
+**Three levels (from most general to most specific):**
+
+| Level          | Scope                                     | Example Use                     |
+| -------------- | ----------------------------------------- | ------------------------------- |
+| **Global**     | Available in all collections and requests | API base URL, common headers    |
+| **Collection** | Only available in one collection          | Collection-specific auth tokens |
+| **Request**    | Only available in one request             | One-time test values            |
+
+**Priority order:**
+If the same variable exists at multiple levels, the most specific one wins:
+
+**Learn more:** See [Environment Variables](./06_environment.mdx) section.
