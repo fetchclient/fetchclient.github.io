@@ -11,7 +11,7 @@
   background-color: powderblue;
 }
 
-[data-theme='dark'] .heroBanner {
+[data-theme="dark"] .heroBanner {
   background-color: #0f172a;
 }
 
