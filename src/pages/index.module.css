@@ -11,6 +11,10 @@
   background-color: powderblue;
 }
 
+[data-theme='dark'] .heroBanner {
+  background-color: #0f172a;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
