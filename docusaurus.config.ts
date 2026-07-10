@@ -10,10 +10,10 @@ const config: Config = {
   future: {
     v4: false,
   },
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://fetchclient.github.io",
   baseUrl: "/",
-  organizationName: "Ganesan-Chandran",
-  projectName: "fetch-client",
+  organizationName: "fetchclient",
+  projectName: "fetchclient.github.io",
   onBrokenLinks: "throw",
   i18n: {
     defaultLocale: "en",
@@ -38,14 +38,14 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           editUrl:
-            "https://github.com/Ganesan-Chandran/fetch-client-docs/tree/main/",
+            "https://github.com/fetchclient/fetchclient.github.io/tree/main/",
         },
         blog: {
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
           showReadingTime: true,
           editUrl:
-            "https://github.com/Ganesan-Chandran/fetch-client-docs/tree/main/",
+            "https://github.com/fetchclient/fetchclient.github.io/tree/main/",
         },
         theme: {
           customCss: "./src/css/custom.css",
