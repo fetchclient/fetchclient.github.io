@@ -7,7 +7,6 @@
     "start": "docusaurus start",
     "build": "pnpm lint && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "pnpm lint && docusaurus build && docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
