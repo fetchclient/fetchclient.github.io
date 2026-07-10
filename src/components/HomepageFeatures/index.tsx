@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Lightweight & Fast",
     png: require("@site/static/img/api.png").default,
-    link: "./docs/extension/intro",
+    link: "./docs/extension/introduction",
     description: (
       <>
         Minimal resource usage and instant response. Fetch Client is designed to
@@ -58,7 +58,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Pre-Run Requests",
     png: require("@site/static/img/checklist.png").default,
-    link: "./docs/extension/features/Advanced/prefetch",
+    link: "./docs/extension/features/advanced/pre-requests",
     description: (
       <>
         Run API requests before your main API call to prepare data,
@@ -69,7 +69,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Scheduled Requests",
     png: require("@site/static/img/repeat.png").default,
-    link: "./docs/extension/features/Advanced/auto-request",
+    link: "./docs/extension/features/advanced/auto-requests",
     description: (
       <>
         Schedule and run API calls automatically with set intervals, reducing
@@ -80,7 +80,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Performance Test",
     png: require("@site/static/img/perf-test-logo.png").default,
-    link: "./docs/extension/features/Advanced/perftest",
+    link: "./docs/extension/features/advanced/performance-testing",
     description: (
       <>
         Schedule and run API calls automatically with set intervals, reducing
