@@ -4,223 +4,186 @@ slug: /extension/features/api-requests
 
 # API Requests
 
-This guide shows you how to create and send API requests with Fetch Client.
+Learn how to create, configure, and send HTTP requests using Fetch Client.
 
-## 📌 HTTP Methods
+## 🚀 Create Your First Request
 
-HTTP methods tell the server what action you want to perform. Fetch Client supports all standard methods:
+Creating a request only takes a few steps:
 
-| Method      | Purpose                                       | Example Use                  |
-| ----------- | --------------------------------------------- | ---------------------------- |
-| **GET**     | Get data from the server                      | Fetch a list of users        |
-| **POST**    | Create new data                               | Add a new user account       |
-| **PUT**     | Replace existing data completely              | Update all user details      |
-| **PATCH**   | Update only part of the data                  | Change just the user's email |
-| **DELETE**  | Remove data                                   | Delete a user account        |
-| **HEAD**    | Check if data exists (without downloading it) | Verify a file is available   |
-| **OPTIONS** | Find out what methods are allowed             | Check API capabilities       |
+1. Click **New Request**.
+2. Select an **HTTP Method**.
+3. Enter the request URL.
+4. Configure authentication (if required).
+5. Add headers, query parameters, or a request body.
+6. Click **Send**.
 
-**How to select a method:**
 
-1. Click the dropdown next to the URL field
-2. Choose the method you need
-3. Enter your API endpoint URL
+## 🌐 HTTP Methods
 
-## 🅿️ Query Parameters
+Fetch Client supports all standard HTTP methods.
 
-Query parameters are extra values added to your URL. They look like this: `?key=value&another=value`
+| Method | Description | Common Use |
+|---------|-------------|------------|
+| **GET** | Retrieve data | Fetch users |
+| **POST** | Create resources | Create a user |
+| **PUT** | Replace resources | Update a user |
+| **PATCH** | Partially update resources | Change an email |
+| **DELETE** | Remove resources | Delete a user |
+| **HEAD** | Retrieve headers only | Check resource availability |
+| **OPTIONS** | Discover supported methods | API capabilities |
 
-**Adding parameters:**
 
-1. Go to the **Query Params** tab
-2. Click **Add Parameter**
-3. Enter the parameter name (key) and value
-4. The URL updates automatically
+## 🔗 URL & Query Parameters
 
-**Example:**
+Query parameters allow you to pass additional information in the URL.
+
+**Example**
 
 ```text
-Base URL: https://api.example.com/users
-Parameters:
-  - page: 1
-  - limit: 10
-
-Final URL: https://api.example.com/users?page=1&limit=10
+https://api.example.com/users?page=1&limit=10
 ```
 
-## 🔑 Authorization
+To add query parameters:
 
-Many APIs require authentication to verify who you are. Fetch Client supports five authentication types:
+1. Open the **Query Params** tab.
+2. Click **Add Parameter**.
+3. Enter the parameter name and value.
+4. The request URL updates automatically.
+
+
+## 🔐 Authentication
+
+Fetch Client supports multiple authentication methods.
+
+| Authentication | Best For |
+|----------------|----------|
+| Basic Auth | Username & Password |
+| Bearer Token | JWT & Access Tokens |
+| API Key | Header or Query authentication |
+| AWS Signature | AWS APIs |
+| OAuth 2.0 | Enterprise authentication |
 
 ### Basic Auth
 
-Uses a username and password. The simplest form of authentication.
-
-**How to set up:**
-
-1. Select **Basic Auth** from the Auth tab
-2. Enter your username
-3. Enter your password
-4. Fetch Client automatically encodes and adds the credentials to your request
+- Username & Password authentication.
+- Credentials are automatically Base64 encoded.
 
 ### Bearer Token
 
-Uses a special token (often a JSON Web Token or JWT) to authenticate.
-
-**How to set up:**
-
-1. Select **Bearer Token** from the Auth tab
-2. Paste your token in the Token field
-3. The token is automatically added to the `Authorization` header
-
-**Example token:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
+- Uses access tokens (JWT).
+- Automatically adds the `Authorization` header.
 
 ### API Key
 
-Uses a secret key that you include in your request headers or URL.
+Supports:
 
-**How to set up:**
-
-1. Select **API Key** from the Auth tab
-2. Choose where to add the key: **Header** or **Query Parameter**
-3. Enter the key name (e.g., "X-API-Key" or "apikey")
-4. Enter your API key value
+- Header
+- Query Parameter
 
 ### AWS Signature
 
-Uses Amazon Web Services (AWS) authentication method (Signature Version 4).
+Supports AWS Signature Version 4 authentication.
 
-**How to set up:**
+Configure:
 
-1. Select **AWS Signature** from the Auth tab
-2. Enter your AWS Access Key ID
-3. Enter your AWS Secret Access Key
-4. Specify the AWS Region (e.g., "us-east-1")
-5. Enter the Service name (e.g., "s3", "execute-api")
+- Access Key
+- Secret Key
+- Region
+- Service
 
 ### OAuth 2.0
 
-Uses the OAuth 2.0 protocol for secure authorization.
+Uses the OAuth 2.0 protocol to securely obtain and use access tokens.
+
+**Supported grant types:**
+
+- Authorization Code
+- Authorization Code with PKCE
+- Client Credentials
+- Resource Owner Password Credentials (Password)
+
+**Features:**
+
+- Automatic authorization flow for Authorization Code
+- PKCE support with configurable code challenge methods
+- Automatic access token retrieval and injection
+- Configurable client authentication (Header or Request Body)
+- Custom scopes
+- Audience and Resource parameters
+- Custom token field name
+- Variable support for OAuth configuration values
 
 **How to set up:**
 
-1. Select **OAuth 2.0** from the Auth tab
-2. Configure your OAuth settings (client ID, redirect URI, etc.)
-3. Complete the authorization flow
-4. The access token is automatically included in requests
+1. Select **OAuth 2.0** from the **Auth** tab.
+2. Choose the required **Grant Type**.
+3. Configure the required settings:
+   - Access Token URL
+   - Authorization URL (Authorization Code only)
+   - Client ID
+   - Client Secret
+   - Scope (optional)
+4. Configure any advanced options such as:
+   - Client Authentication
+   - Audience
+   - Resource
+   - Token Name
+5. Click **Get New Token**.
+6. Fetch Client completes the authorization flow, retrieves the access token, and automatically includes it in the `Authorization` header for subsequent requests.
+
 
 ## 📝 Headers
 
-Headers provide additional information about your request. They tell the server things like what type of data you're sending or what format you want back.
+Headers provide additional metadata for requests.
 
-**Adding headers:**
+Examples include:
 
-1. Go to the **Headers** tab
-2. Enter the header name and value
-3. Use the checkbox to enable or disable headers
+- Authorization
+- Content-Type
+- Accept
+- User-Agent
+- Cache-Control
 
-**Smart features:**
+Features:
 
-- **Auto-complete** - Start typing and see common header names
-- **Value suggestions** - Get recommendations for header values
-- **Common headers pre-filled** - Content-Type is often added automatically
+- Header auto-completion
+- Header value suggestions
+- Enable/Disable headers
+- Automatic Content-Type detection
 
-<div align="center">
-  <img
-    src="/img/header-suggestion.png?raw=true"
-    alt="Auto-complete suggestions for HTTP headers"
-  />
-  <br />
-  <br />
-  <img
-    src="/img/header-value-suggestion.png?raw=true"
-    alt="Value suggestions for HTTP headers"
-  />
-</div>
 
-## 📩 Request Body
+## 📦 Request Body
 
-The request body contains the data you want to send to the server. Different APIs expect different formats.
+Choose the request body format that matches your API.
 
-### Form Data (Multipart)
+| Type | Description |
+|------|-------------|
+| Form Data | Upload files and form fields |
+| Form URL Encoded | HTML form submissions |
+| Raw | JSON, XML, Text |
+| Binary | Upload a file |
+| GraphQL | GraphQL queries & variables |
 
-Use this to upload files or send form data with files attached.
+### Form Data
 
-**How to add:**
+Use multipart form data to upload files.
 
-1. Select **Form** in the Body tab
-2. For text fields: Enter key and value
-3. For files: Click the file icon and select your file
+### Form URL Encoded
 
-### Form-Encoded
+Send standard HTML form data.
 
-Use this for standard web form submissions (like HTML forms).
+### Raw
 
-**How to add:**
+Supported content types:
 
-1. Select **Form-Encoded** in the Body tab
-2. Add key-value pairs
-3. Data is automatically URL-encoded
+- JSON
+- XML
+- Plain Text
+- HTML
 
-### Raw Data
+### Binary
 
-Send data in text format. Choose from multiple content types:
-
-#### JSON (JavaScript Object Notation)
-
-The most common format for modern APIs.
-
-**Example:**
-
-```json
-{
-  "name": "John Smith",
-  "email": "john@example.com",
-  "age": 30
-}
-```
-
-**How to add:**
-
-1. Select **Raw** in the Body tab
-2. Choose **JSON** from the dropdown
-3. Type or paste your JSON data
-4. Fetch Client validates your JSON automatically
-
-#### Plain Text
-
-Send simple text without any special formatting.
-
-**Example:**
-
-```text
-This is plain text data.
-It can be multiple lines.
-```
-
-#### XML (Extensible Markup Language)
-
-Used by older or enterprise APIs.
-
-**Example:**
-
-```xml
-<user>
-  <name>John Smith</name>
-  <email>john@example.com</email>
-</user>
-```
-
-### Binary File
-
-Upload a single file. The correct Content-Type is detected automatically.
-
-**How to add:**
-
-1. Select **Binary** in the Body tab
-2. Click **Select File**
-3. Choose your file
-4. The file type is detected automatically
+Upload a single file with automatic content-type detection.
 
 <div align="center">
   <img
@@ -232,13 +195,11 @@ Upload a single file. The correct Content-Type is detected automatically.
 
 ### GraphQL
 
-Send GraphQL queries and mutations with variables.
+Supports:
 
-**How to add:**
-
-1. Select **GraphQL** in the Body tab
-2. Enter your GraphQL query in the Query section
-3. Add variables in the Variables section (JSON format)
+- Queries
+- Mutations
+- Variables
 
 **Example query:**
 
@@ -259,10 +220,39 @@ query GetUser($id: ID!) {
 }
 ```
 
+
+## 🌍 Variables
+
+Variables can be used throughout requests.
+
+```text
+{{base_url}}/users
+
+Authorization:
+Bearer {{access_token}}
+```
+
+Supported variable scopes:
+
+- Global Variables
+- Collection Variables
+- Request Variables
+- Environment Variables
+- System Variables
+
+
+:::tip
+- Use environments instead of hardcoded URLs.
+- Store secrets in variables.
+- Save frequently used requests into collections.
+- Reuse authentication with variables.
+- Add tests to validate responses automatically.
+:::
+
+
 ## ➡️ Next Steps
 
-Now that you know how to create requests, learn about:
-
-- [Working with Responses](./03_response.mdx) - Understand and analyze API responses
-- [Environment Variables](./06_environment.mdx) - Use variables to avoid repeating values
-- [Testing](./05_testing.mdx) - Write tests for your endpoints
+- [Responses](./03_response.mdx)
+- [Variables](./06_environment.mdx)
+- [Testing](./05_testing.mdx)
+- [Collections](./04_collections.mdx)

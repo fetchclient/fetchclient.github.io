@@ -20,13 +20,27 @@ fc-cli list [options]
 
 ### ⚙️ Options
 
-| Option          | Description             |
-| --------------- | ----------------------- |
-| `--col`         | List collections        |
-| `--fol`         | List folders            |
-| `--var`         | List Variable Sets      |
-| `--name <name>` | Filter by resource name |
-| `--id <uuid>`   | Filter by resource ID   |
+| Option | Description |
+| ------- | ----------- |
+| `--col` | List collections or find a collection by name or ID |
+| `--fol` | List folders or find a folder by name or ID |
+| `--var` | List Variable Sets or find a Variable Set by name or ID |
+
+:::tip Simplified syntax
+
+The CLI supports a simplified syntax where names or IDs can be passed directly after `--col`, `--fol`, and `--var`.
+
+For example:
+
+```bash
+fc-cli list --col "Sample"
+fc-cli list --fol "Authentication"
+fc-cli list --var "QA Variables"
+```
+
+The legacy options (`--name` and `--id`) are still fully supported for backward compatibility.
+
+:::
 
 ## 📝 Examples
 
@@ -37,42 +51,75 @@ fc-cli list --col
 ```
 
 <div align="center">
-  <img src="/img/cli/fc-list-col.png?raw=true" alt="fc-cli check" />
+  <img src="/img/cli/fc-list-col.png?raw=true" alt="fc-cli list collections" />
 </div>
 <br />
 
 ### 🔎 Find a Collection by Name
+
+**Preferred**
+
+```bash
+fc-cli list --col "Sample"
+```
+
+**Legacy (still supported)**
 
 ```bash
 fc-cli list --col --name "Sample"
 ```
 
 <div align="center">
-  <img src="/img/cli/fc-list-col-name.png?raw=true" alt="fc-cli check" />
+  <img src="/img/cli/fc-list-col-name.png?raw=true" alt="fc-cli list collection by name" />
 </div>
 <br />
 
 ### 🆔 Find a Collection by ID
+
+**Preferred**
+
+```bash
+fc-cli list --col 7f12419c-91c8-44d0-a8e5-cb351dd287e3
+```
+
+**Legacy (still supported)**
 
 ```bash
 fc-cli list --col --id 7f12419c-91c8-44d0-a8e5-cb351dd287e3
 ```
 
 <div align="center">
-  <img src="/img/cli/fc-list-col-id.png?raw=true" alt="fc-cli check" />
+  <img src="/img/cli/fc-list-col-id.png?raw=true" alt="fc-cli list collection by id" />
 </div>
 <br />
 
 ## 📖 List Commands
 
-| Command                           | Description                                        |
-| --------------------------------- | -------------------------------------------------- |
-| `fc-cli list --col`               | List all collections.                              |
-| `fc-cli list --col --id <uuid>`   | Display the collection with the specified ID.      |
-| `fc-cli list --col --name <name>` | Display collections matching the specified name.   |
-| `fc-cli list --fol`               | List all folders.                                  |
-| `fc-cli list --fol --id <uuid>`   | Display the folder with the specified ID.          |
-| `fc-cli list --fol --name <name>` | Display folders matching the specified name.       |
-| `fc-cli list --var`               | List all variable sets.                            |
-| `fc-cli list --var --id <uuid>`   | Display the variable set with the specified ID.    |
-| `fc-cli list --var --name <name>` | Display variable sets matching the specified name. |
+| Action | Preferred command | Legacy command |
+| ------ | ----------------- | -------------- |
+| List all collections | `fc-cli list --col` | Same |
+| Find a collection by name | `fc-cli list --col "Sample"` | `fc-cli list --col --name "Sample"` |
+| Find a collection by ID | `fc-cli list --col <collection-id>` | `fc-cli list --col --id <collection-id>` |
+| List all folders | `fc-cli list --fol` | Same |
+| Find a folder by name | `fc-cli list --fol "Authentication"` | `fc-cli list --fol --name "Authentication"` |
+| Find a folder by ID | `fc-cli list --fol <folder-id>` | `fc-cli list --fol --id <folder-id>` |
+| List all Variable Sets | `fc-cli list --var` | Same |
+| Find a Variable Set by name | `fc-cli list --var "QA Variables"` | `fc-cli list --var --name "QA Variables"` |
+| Find a Variable Set by ID | `fc-cli list --var <variable-set-id>` | `fc-cli list --var --id <variable-set-id>` |
+
+---
+
+## 🔄 Backward Compatibility
+
+The simplified syntax is recommended for all new commands and scripts.
+
+For compatibility with existing automation and CI/CD pipelines, the legacy options continue to be fully supported.
+
+| Preferred | Legacy |
+| ---------- | ------ |
+| `--col "Sample"` | `--col --name "Sample"` |
+| `--col <collection-id>` | `--col --id <collection-id>` |
+| `--fol "Authentication"` | `--fol --name "Authentication"` |
+| `--fol <folder-id>` | `--fol --id <folder-id>` |
+| `--var "QA Variables"` | `--var --name "QA Variables"` |
+| `--var <variable-set-id>` | `--var --id <variable-set-id>` |

@@ -25,6 +25,7 @@ function HomepageHeader() {
             className={clsx(
               "button button--secondary button--lg",
               styles.buttonSpace,
+              styles.buttonLeftSpace,
             )}
             to="https://marketplace.visualstudio.com/items?itemName=GanesanChandran.fetch-client"
           >
