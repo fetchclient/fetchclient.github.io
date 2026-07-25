@@ -6,8 +6,6 @@ sidebar_position: 8
 slug: /cli/performance-testing
 ---
 
-# ⚡ Performance Testing
-
 Run load tests against a single request, folder, collection, or exported collection directly from the Fetch Client CLI.
 
 Performance testing simulates multiple concurrent virtual users (VUs) sending requests to your APIs, allowing you to measure response times, throughput, and failure rates under load. Reports can also be exported for later analysis.
@@ -20,23 +18,23 @@ fc-cli perf [options]
 
 ## ⚙️ Options
 
-| Option | Description |
-| ------- | ----------- |
-| `--req` | Load test a request by name or ID |
-| `--fol` | Load test a folder by name or ID |
-| `--col` | Load test a collection by name or ID |
-| `--file` | Load test an exported collection |
-| `--var` | Override the Variable Set by name or ID |
-| `--var-file` | Override variables for an exported collection |
-| `--load-model` | Load model (`fixed`, `duration`, `rampup`, `combined`) |
-| `--vus` | Number of virtual users |
-| `--iterations` | Number of iterations (Fixed model only) |
-| `--duration` | Test duration in seconds |
-| `--rampup-duration` | Ramp-up duration in seconds |
-| `--rampup-steps` | Number of ramp-up steps |
-| `--think-time` | Delay between request waves |
-| `--export` | Export the performance report |
-| `--export-path` | Directory where reports are saved |
+| Option              | Description                                            |
+| ------------------- | ------------------------------------------------------ |
+| `--req`             | Load test a request by name or ID                      |
+| `--fol`             | Load test a folder by name or ID                       |
+| `--col`             | Load test a collection by name or ID                   |
+| `--file`            | Load test an exported collection                       |
+| `--var`             | Override the Variable Set by name or ID                |
+| `--var-file`        | Override variables for an exported collection          |
+| `--load-model`      | Load model (`fixed`, `duration`, `rampup`, `combined`) |
+| `--vus`             | Number of virtual users                                |
+| `--iterations`      | Number of iterations (Fixed model only)                |
+| `--duration`        | Test duration in seconds                               |
+| `--rampup-duration` | Ramp-up duration in seconds                            |
+| `--rampup-steps`    | Number of ramp-up steps                                |
+| `--think-time`      | Delay between request waves                            |
+| `--export`          | Export the performance report                          |
+| `--export-path`     | Directory where reports are saved                      |
 
 ## 🎯 Supported Scopes
 
@@ -49,20 +47,20 @@ Performance tests can be executed against:
 
 ## 🚀 Basic usage
 
-| Action | Command |
-| ------ | ------- |
-| Test a request | `fc-cli perf --req "Login"` |
-| Test a request by ID | `fc-cli perf --req <request-id>` |
-| Test a folder | `fc-cli perf --fol "Authentication"` |
-| Test a folder by ID | `fc-cli perf --fol <folder-id>` |
-| Test a collection | `fc-cli perf --col "User APIs"` |
-| Test a collection by ID | `fc-cli perf --col <collection-id>` |
-| Test an exported collection | `fc-cli perf --file collection.json` |
-| Test a folder from an exported collection | `fc-cli perf --file collection.json --fol "Authentication"` |
-| Test a request from an exported collection | `fc-cli perf --file collection.json --req "Login"` |
-| Override the Variable Set | `fc-cli perf --col "User APIs" --var "Production"` |
+| Action                                        | Command                                                        |
+| --------------------------------------------- | -------------------------------------------------------------- |
+| Test a request                                | `fc-cli perf --req "Login"`                                    |
+| Test a request by ID                          | `fc-cli perf --req <request-id>`                               |
+| Test a folder                                 | `fc-cli perf --fol "Authentication"`                           |
+| Test a folder by ID                           | `fc-cli perf --fol <folder-id>`                                |
+| Test a collection                             | `fc-cli perf --col "User APIs"`                                |
+| Test a collection by ID                       | `fc-cli perf --col <collection-id>`                            |
+| Test an exported collection                   | `fc-cli perf --file collection.json`                           |
+| Test a folder from an exported collection     | `fc-cli perf --file collection.json --fol "Authentication"`    |
+| Test a request from an exported collection    | `fc-cli perf --file collection.json --req "Login"`             |
+| Override the Variable Set                     | `fc-cli perf --col "User APIs" --var "Production"`             |
 | Override variables for an exported collection | `fc-cli perf --file collection.json --var-file variables.json` |
-| Export a report | `fc-cli perf --col "User APIs" --export html` |
+| Export a report                               | `fc-cli perf --col "User APIs" --export html`                  |
 
 ## 📦 Run an Exported Collection
 
@@ -100,15 +98,15 @@ fc-cli perf --file collection.json --var-file variables.json
 
 ## ⚙️ Performance options
 
-| Option | Description | Default |
-|---------|-------------|---------|
-| `--load-model` | fixed, duration, rampup, combined | fixed |
-| `--vus` | Number of virtual users | 5 |
-| `--iterations` | Iterations per virtual user (Fixed only) | 10 |
-| `--duration` | Test duration in seconds | 30 |
-| `--rampup-duration` | Ramp-up duration in seconds | 20 |
-| `--rampup-steps` | Number of ramp steps | 5 |
-| `--think-time` | Delay between waves (milliseconds) | 0 |
+| Option              | Description                              | Default |
+| ------------------- | ---------------------------------------- | ------- |
+| `--load-model`      | fixed, duration, rampup, combined        | fixed   |
+| `--vus`             | Number of virtual users                  | 5       |
+| `--iterations`      | Iterations per virtual user (Fixed only) | 10      |
+| `--duration`        | Test duration in seconds                 | 30      |
+| `--rampup-duration` | Ramp-up duration in seconds              | 20      |
+| `--rampup-steps`    | Number of ramp steps                     | 5       |
+| `--think-time`      | Delay between waves (milliseconds)       | 0       |
 
 ## 📈 Load models
 
@@ -126,11 +124,11 @@ fc-cli perf \
   --iterations 50
 ```
 
-**Options**
+#### Options
 
-| Option | Description |
-|---------|-------------|
-| `--vus` | Number of concurrent virtual users |
+| Option         | Description                                         |
+| -------------- | --------------------------------------------------- |
+| `--vus`        | Number of concurrent virtual users                  |
 | `--iterations` | Number of iterations performed by each virtual user |
 
 Use this model when you need repeatable benchmark tests.
@@ -149,12 +147,12 @@ fc-cli perf \
   --duration 120
 ```
 
-**Options**
+#### Options
 
-| Option | Description |
-|---------|-------------|
-| `--vus` | Number of concurrent virtual users |
-| `--duration` | Test duration in seconds |
+| Option       | Description                        |
+| ------------ | ---------------------------------- |
+| `--vus`      | Number of concurrent virtual users |
+| `--duration` | Test duration in seconds           |
 
 Use this model for soak or endurance testing.
 
@@ -173,13 +171,13 @@ fc-cli perf \
   --rampup-steps 10
 ```
 
-**Options**
+#### Options
 
-| Option | Description |
-|---------|-------------|
-| `--vus` | Target virtual users |
-| `--rampup-duration` | Total ramp-up duration in seconds |
-| `--rampup-steps` | Number of increments during ramp-up |
+| Option              | Description                         |
+| ------------------- | ----------------------------------- |
+| `--vus`             | Target virtual users                |
+| `--rampup-duration` | Total ramp-up duration in seconds   |
+| `--rampup-steps`    | Number of increments during ramp-up |
 
 Use this model to identify the load level at which performance begins to degrade.
 
@@ -198,14 +196,14 @@ fc-cli perf \
   --duration 300
 ```
 
-**Options**
+#### Options
 
-| Option | Description |
-|---------|-------------|
-| `--vus` | Target virtual users |
-| `--rampup-duration` | Ramp-up duration |
-| `--rampup-steps` | Number of ramp steps |
-| `--duration` | Time to maintain peak load |
+| Option              | Description                |
+| ------------------- | -------------------------- |
+| `--vus`             | Target virtual users       |
+| `--rampup-duration` | Ramp-up duration           |
+| `--rampup-steps`    | Number of ramp steps       |
+| `--duration`        | Time to maintain peak load |
 
 This model most closely resembles real production traffic patterns.
 
@@ -257,12 +255,12 @@ fc-cli perf \
 
 ### Supported export formats
 
-| Format | Description |
-|--------|-------------|
-| JSON | Complete performance test results |
-| CSV | Spreadsheet-friendly summary |
-| HTML | Interactive report for sharing |
-| XML | Structured report for integrations |
+| Format | Description                        |
+| ------ | ---------------------------------- |
+| JSON   | Complete performance test results  |
+| CSV    | Spreadsheet-friendly summary       |
+| HTML   | Interactive report for sharing     |
+| XML    | Structured report for integrations |
 
 ## 🛑 Gracefully stopping a test
 
@@ -279,13 +277,13 @@ Press **Ctrl+C** while a test is running.
 
 ## 🚧 Limits
 
-| Setting | Maximum |
-|---------|---------|
-| Virtual Users | 50 |
-| Iterations | 1000 |
-| Test Duration | 3600 seconds |
+| Setting          | Maximum      |
+| ---------------- | ------------ |
+| Virtual Users    | 50           |
+| Iterations       | 1000         |
+| Test Duration    | 3600 seconds |
 | Ramp-up Duration | 3600 seconds |
-| Think Time | 300000 ms |
+| Think Time       | 300000 ms    |
 
 ## 💡 Examples
 

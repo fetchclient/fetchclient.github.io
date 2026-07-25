@@ -6,8 +6,6 @@ sidebar_position: 9
 slug: /cli/data-driven-testing
 ---
 
-# 📊 Data-Driven Testing
-
 Run the same request, folder, collection, or exported collection multiple times using data from a CSV or JSON file.
 
 Each row in the data file becomes one complete execution of the selected request(s), making it easy to validate APIs against multiple datasets without manually changing variables between runs.
@@ -20,21 +18,21 @@ fc-cli dd [options]
 
 ## ⚙️ Options
 
-| Option | Description |
-| ------- | ----------- |
-| `--req` | Run one or more requests by name or ID |
-| `--fol` | Run a folder by name or ID |
-| `--col` | Run a collection by name or ID |
-| `--file` | Run an exported collection |
-| `--data` | CSV or JSON data file (required) |
-| `--dd-format` | Data file format (`csv` or `json`) |
-| `--dd-separator` | CSV separator (`,`, `;`, or `tab`) |
-| `--stop-on-fail` | Stop execution after the first failed row |
-| `--validate` | Validate variables without executing requests |
-| `--var` | Override the Variable Set by name or ID |
-| `--var-file` | Override variables for an exported collection |
-| `--export` | Export the test report |
-| `--export-path` | Directory where reports are saved |
+| Option           | Description                                   |
+| ---------------- | --------------------------------------------- |
+| `--req`          | Run one or more requests by name or ID        |
+| `--fol`          | Run a folder by name or ID                    |
+| `--col`          | Run a collection by name or ID                |
+| `--file`         | Run an exported collection                    |
+| `--data`         | CSV or JSON data file (required)              |
+| `--dd-format`    | Data file format (`csv` or `json`)            |
+| `--dd-separator` | CSV separator (`,`, `;`, or `tab`)            |
+| `--stop-on-fail` | Stop execution after the first failed row     |
+| `--validate`     | Validate variables without executing requests |
+| `--var`          | Override the Variable Set by name or ID       |
+| `--var-file`     | Override variables for an exported collection |
+| `--export`       | Export the test report                        |
+| `--export-path`  | Directory where reports are saved             |
 
 ## 🎯 Supported scopes
 
@@ -48,19 +46,19 @@ Data-driven testing can be executed against:
 
 ## 🚀 Basic Usage
 
-| Action | Command |
-| ------ | ------- |
-| Run a collection | `fc-cli dd --col "User APIs" --data users.csv` |
-| Run a collection by ID | `fc-cli dd --col <collection-id> --data users.csv` |
-| Run a folder | `fc-cli dd --fol "Authentication" --data users.csv` |
-| Run a folder by ID | `fc-cli dd --fol <folder-id> --data users.csv` |
-| Run a request | `fc-cli dd --req "Login" --data users.csv` |
-| Run a request by ID | `fc-cli dd --req <request-id> --data users.csv` |
-| Run multiple requests | `fc-cli dd --req "Login,Get Profile,Update User" --data users.csv` |
-| Run an exported collection | `fc-cli dd --file collection.json --data users.csv` |
-| Run a folder from an exported collection | `fc-cli dd --file collection.json --fol "Authentication" --data users.csv` |
-| Run a request from an exported collection | `fc-cli dd --file collection.json --req "Login" --data users.csv` |
-| Override Variable Set | `fc-cli dd --col "User APIs" --var "Production" --data users.csv` |
+| Action                                        | Command                                                                       |
+| --------------------------------------------- | ----------------------------------------------------------------------------- |
+| Run a collection                              | `fc-cli dd --col "User APIs" --data users.csv`                                |
+| Run a collection by ID                        | `fc-cli dd --col <collection-id> --data users.csv`                            |
+| Run a folder                                  | `fc-cli dd --fol "Authentication" --data users.csv`                           |
+| Run a folder by ID                            | `fc-cli dd --fol <folder-id> --data users.csv`                                |
+| Run a request                                 | `fc-cli dd --req "Login" --data users.csv`                                    |
+| Run a request by ID                           | `fc-cli dd --req <request-id> --data users.csv`                               |
+| Run multiple requests                         | `fc-cli dd --req "Login,Get Profile,Update User" --data users.csv`            |
+| Run an exported collection                    | `fc-cli dd --file collection.json --data users.csv`                           |
+| Run a folder from an exported collection      | `fc-cli dd --file collection.json --fol "Authentication" --data users.csv`    |
+| Run a request from an exported collection     | `fc-cli dd --file collection.json --req "Login" --data users.csv`             |
+| Override Variable Set                         | `fc-cli dd --col "User APIs" --var "Production" --data users.csv`             |
 | Override variables for an exported collection | `fc-cli dd --file collection.json --var-file variables.json --data users.csv` |
 
 ## 📦 Run an Exported Collection
@@ -317,13 +315,13 @@ fc-cli dd \
 
 ### Supported export formats
 
-| Format | Description |
-|---------|-------------|
-| JSON | Complete execution report |
-| CSV | Spreadsheet-friendly report |
-| HTML | Interactive report |
-| XML | Structured XML report |
-| NUnit | NUnit-compatible XML report |
+| Format | Description                 |
+| ------ | --------------------------- |
+| JSON   | Complete execution report   |
+| CSV    | Spreadsheet-friendly report |
+| HTML   | Interactive report          |
+| XML    | Structured XML report       |
+| NUnit  | NUnit-compatible XML report |
 
 ## 🛑 Gracefully stopping a test
 
@@ -339,9 +337,9 @@ Press **Ctrl+C** while the test is running.
 
 ## 🚧 Limits
 
-| Setting | Maximum |
-|---------|---------|
-| Data rows | 100 |
+| Setting   | Maximum |
+| --------- | ------- |
+| Data rows | 100     |
 
 ## 💡 Examples
 

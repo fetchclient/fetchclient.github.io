@@ -2,14 +2,27 @@
   "config": {
     "default": true,
     "MD013": false,
-    "MD033": false
+    "MD033": false,
+    "MD024": {
+      "siblings_only": true
+    }
   },
+  "overrides": [
+    {
+      "files": [
+        "docs/credits.mdx"
+      ],
+      "config": {
+        "MD034": false
+      }
+    }
+  ],
   "globs": [
     "**/*.{md,mdx}",
     "!node_modules/**",
     "!build/**",
     "!.docusaurus/**",
     "!CHANGELOG.md",
-    "!CHANGELOG*.md",
-  ],
+    "!CHANGELOG*.md"
+  ]
 }

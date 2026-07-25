@@ -25,10 +25,7 @@ The panel opens with two tabs: **Setup** (prepare your data and pick your reques
 
 <div align="center">
   <br />
-  <img
-    src="/img/ddtest.png?raw=true"
-    alt="Performance Test Setup"
-  />
+  <img src="/img/ddtest.png?raw=true" alt="Performance Test Setup" />
   <br />
 </div>
 
@@ -38,7 +35,7 @@ A data file is just a table of values - one row per test case, one column per va
 
 **Example CSV:**
 
-```
+```text
 username,password,expectedStatus
 alice,pass123,200
 bob,wrongpass,401
@@ -48,10 +45,10 @@ Every row in this file becomes one full run through your selected request(s), wi
 
 ### Supported file formats
 
-| Format   | What's supported                                                                                  |
-| -------- | --------------------------------------------------------------------------------------------------- |
+| Format   | What's supported                                                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **CSV**  | Comma, semicolon, or tab-separated. First row is treated as the column headers. Quoted values (`"..."`) are supported if a value itself contains the separator. |
-| **JSON** | Either a plain array of objects (`[{...}, {...}]`), or an object with a `data` or `rows` key containing the array. |
+| **JSON** | Either a plain array of objects (`[{...}, {...}]`), or an object with a `data` or `rows` key containing the array.                                              |
 
 Use the **Setup** tab to browse for your file, then choose the matching **File Format** and, for CSV files, the correct **Separator**. Changing the format or separator automatically re-parses the file you've already loaded.
 
@@ -59,11 +56,11 @@ If the file can't be read - wrong format, empty file, no columns found - you'll 
 
 ## ⚙️ Setup options
 
-| Setting                | Description                                                                                     |
-| ----------------------- | ------------------------------------------------------------------------------------------------- |
-| **File Format**         | CSV or JSON - must match your data file.                                                          |
-| **Separator**           | Comma, semicolon, or tab (CSV only).                                                              |
-| **Stop on Row Failure** | If turned on, the test stops as soon as one row fails instead of continuing through the rest.     |
+| Setting                 | Description                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| **File Format**         | CSV or JSON - must match your data file.                                                      |
+| **Separator**           | Comma, semicolon, or tab (CSV only).                                                          |
+| **Stop on Row Failure** | If turned on, the test stops as soon as one row fails instead of continuing through the rest. |
 
 ## ✅ Choosing your requests
 
@@ -96,10 +93,7 @@ Any variables already defined in your collection's variable set don't need to be
 
 <div align="center">
   <br />
-  <img
-    src="/img/ddtest-summary.png?raw=true"
-    alt="Performance Test Setup"
-  />
+  <img src="/img/ddtest-summary.png?raw=true" alt="Performance Test Setup" />
   <br />
 </div>
 
@@ -107,13 +101,13 @@ Any variables already defined in your collection's variable set don't need to be
 
 ### Summary bar
 
-| Item        | Meaning                                                                 |
-| ----------- | ------------------------------------------------------------------------ |
-| Rows        | Total number of data rows in this test                                   |
-| Requests    | Total individual requests sent so far (rows × requests per row)          |
-| Passed      | Requests that returned successfully and passed any test assertions       |
-| Failed      | Requests that errored out or failed their test assertions                |
-| Cancelled   | Shown if you stopped the test early                                      |
+| Item      | Meaning                                                            |
+| --------- | ------------------------------------------------------------------ |
+| Rows      | Total number of data rows in this test                             |
+| Requests  | Total individual requests sent so far (rows × requests per row)    |
+| Passed    | Requests that returned successfully and passed any test assertions |
+| Failed    | Requests that errored out or failed their test assertions          |
+| Cancelled | Shown if you stopped the test early                                |
 
 ### Results table
 
@@ -132,13 +126,13 @@ Every request sent is listed with:
 
 Once the test is finished (or cancelled), an **Export** button appears with several format options:
 
-| Format    | Best for                                                                                          |
-| --------- | ---------------------------------------------------------------------------------------------------- |
+| Format    | Best for                                                                                                                               |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | **JSON**  | A complete record of the run - your settings, summary numbers, and every row's result. Good for archiving or feeding into other tools. |
-| **CSV**   | A simple spreadsheet-friendly summary of every row's outcome. Good for sharing or reviewing in Excel/Sheets. |
-| **HTML**  | A shareable, readable report you can open in a browser or send to teammates.                          |
-| **XML**   | A structured export for tools that expect XML.                                                        |
-| **NUnit** | A test-report format many CI/CD pipelines and test dashboards can already understand.                 |
+| **CSV**   | A simple spreadsheet-friendly summary of every row's outcome. Good for sharing or reviewing in Excel/Sheets.                           |
+| **HTML**  | A shareable, readable report you can open in a browser or send to teammates.                                                           |
+| **XML**   | A structured export for tools that expect XML.                                                                                         |
+| **NUnit** | A test-report format many CI/CD pipelines and test dashboards can already understand.                                                  |
 
 ## 📝 Good to know
 

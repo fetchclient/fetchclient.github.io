@@ -56,45 +56,46 @@ fc-cli run --req "Get Users"
 fc-cli run --col "Regression Tests"
 fc-cli run --var "QA Variables"
 ```
+
 The legacy options (--name and --id) are still fully supported for backward compatibility.
 :::
 
 ## 📖 Run Commands
 
-| Action | Preferred command | Legacy command |
-| ------- | ----------------- | -------------- |
-| Run a request by name | `fc-cli run --req "Get Users"` | `fc-cli run --req --name "Get Users"` |
-| Run a request by ID | `fc-cli run --req <request-id>` | `fc-cli run --req --id <request-id>` |
-| Run a folder by name | `fc-cli run --fol "Authentication"` | `fc-cli run --fol --name "Authentication"` |
-| Run a folder by ID | `fc-cli run --fol <folder-id>` | `fc-cli run --fol --id <folder-id>` |
-| Run a collection by name | `fc-cli run --col "Regression Tests"` | `fc-cli run --col --name "Regression Tests"` |
-| Run a collection by ID | `fc-cli run --col <collection-id>` | `fc-cli run --col --id <collection-id>` |
-| Run every collection | `fc-cli run --col --all` | Same |
-| Run an exported collection | `fc-cli run --file collection.json` | Same |
-| Run a folder from an exported collection | `fc-cli run --file collection.json --fol "Authentication"` | `fc-cli run --file collection.json --fol --name "Authentication"` |
-| Run a folder by ID from an exported collection | `fc-cli run --file collection.json --fol <folder-id>` | `fc-cli run --file collection.json --fol --id <folder-id>` |
-| Run a request from an exported collection | `fc-cli run --file collection.json --req "Login"` | `fc-cli run --file collection.json --req --name "Login"` |
-| Run a request by ID from an exported collection | `fc-cli run --file collection.json --req <request-id>` | `fc-cli run --file collection.json --req --id <request-id>` |
-| Override variables for an exported collection | `fc-cli run --file collection.json --var-file variables.json` | Same |
-| Run a raw cURL command | `fc-cli run --curl "curl https://api.example.com/users"` | Same |
-| Override Variable Set by name | `fc-cli run --req "Login" --var "QA Variables"` | `fc-cli run --req --name "Login" --var-name "QA Variables"` |
-| Override Variable Set by ID | `fc-cli run --req "Login" --var <variable-set-id>` | `fc-cli run --req --name "Login" --var-id <variable-set-id>` |
-| Export an HTML report | `fc-cli run --col "Regression Tests" --export html` | `fc-cli run --col --name "Regression Tests" --export html` |
-| Export a JSON report | `fc-cli run --col "Regression Tests" --export json` | `fc-cli run --col --name "Regression Tests" --export json` |
-| Export an XML report | `fc-cli run --col --all --export xml` | Same |
-| Export to a custom folder | `fc-cli run --col --all --export json --export-path "./reports"` | Same |
+| Action                                          | Preferred command                                                | Legacy command                                                    |
+| ----------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Run a request by name                           | `fc-cli run --req "Get Users"`                                   | `fc-cli run --req --name "Get Users"`                             |
+| Run a request by ID                             | `fc-cli run --req <request-id>`                                  | `fc-cli run --req --id <request-id>`                              |
+| Run a folder by name                            | `fc-cli run --fol "Authentication"`                              | `fc-cli run --fol --name "Authentication"`                        |
+| Run a folder by ID                              | `fc-cli run --fol <folder-id>`                                   | `fc-cli run --fol --id <folder-id>`                               |
+| Run a collection by name                        | `fc-cli run --col "Regression Tests"`                            | `fc-cli run --col --name "Regression Tests"`                      |
+| Run a collection by ID                          | `fc-cli run --col <collection-id>`                               | `fc-cli run --col --id <collection-id>`                           |
+| Run every collection                            | `fc-cli run --col --all`                                         | Same                                                              |
+| Run an exported collection                      | `fc-cli run --file collection.json`                              | Same                                                              |
+| Run a folder from an exported collection        | `fc-cli run --file collection.json --fol "Authentication"`       | `fc-cli run --file collection.json --fol --name "Authentication"` |
+| Run a folder by ID from an exported collection  | `fc-cli run --file collection.json --fol <folder-id>`            | `fc-cli run --file collection.json --fol --id <folder-id>`        |
+| Run a request from an exported collection       | `fc-cli run --file collection.json --req "Login"`                | `fc-cli run --file collection.json --req --name "Login"`          |
+| Run a request by ID from an exported collection | `fc-cli run --file collection.json --req <request-id>`           | `fc-cli run --file collection.json --req --id <request-id>`       |
+| Override variables for an exported collection   | `fc-cli run --file collection.json --var-file variables.json`    | Same                                                              |
+| Run a raw cURL command                          | `fc-cli run --curl "curl https://api.example.com/users"`         | Same                                                              |
+| Override Variable Set by name                   | `fc-cli run --req "Login" --var "QA Variables"`                  | `fc-cli run --req --name "Login" --var-name "QA Variables"`       |
+| Override Variable Set by ID                     | `fc-cli run --req "Login" --var <variable-set-id>`               | `fc-cli run --req --name "Login" --var-id <variable-set-id>`      |
+| Export an HTML report                           | `fc-cli run --col "Regression Tests" --export html`              | `fc-cli run --col --name "Regression Tests" --export html`        |
+| Export a JSON report                            | `fc-cli run --col "Regression Tests" --export json`              | `fc-cli run --col --name "Regression Tests" --export json`        |
+| Export an XML report                            | `fc-cli run --col --all --export xml`                            | Same                                                              |
+| Export to a custom folder                       | `fc-cli run --col --all --export json --export-path "./reports"` | Same                                                              |
 
 ## 📨 Run a Request
 
 Run a single request by name or ID.
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
-| Run by name | `fc-cli run --req "Get Users"` | `fc-cli run --req --name "Get Users"` |
-| Run by ID | `fc-cli run --req <request-id>` | `fc-cli run --req --id <request-id>` |
+| Action      | Preferred                       | Legacy (still supported)              |
+| ----------- | ------------------------------- | ------------------------------------- |
+| Run by name | `fc-cli run --req "Get Users"`  | `fc-cli run --req --name "Get Users"` |
+| Run by ID   | `fc-cli run --req <request-id>` | `fc-cli run --req --id <request-id>`  |
 
 <div align="center">
-  <br/>
+  <br />
   <img src="/img/cli/fc-run-req.png?raw=true" alt="fc-cli run request" />
 </div>
 
@@ -102,10 +103,10 @@ Run a single request by name or ID.
 
 Run every request in a folder.
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
+| Action      | Preferred                           | Legacy (still supported)                   |
+| ----------- | ----------------------------------- | ------------------------------------------ |
 | Run by name | `fc-cli run --fol "Authentication"` | `fc-cli run --fol --name "Authentication"` |
-| Run by ID | `fc-cli run --fol <folder-id>` | `fc-cli run --fol --id <folder-id>` |
+| Run by ID   | `fc-cli run --fol <folder-id>`      | `fc-cli run --fol --id <folder-id>`        |
 
 <div align="center">
   <br />
@@ -120,10 +121,10 @@ Requests run sequentially, in the same order they appear in the Fetch Client ext
 
 Run every request in a collection.
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
+| Action      | Preferred                             | Legacy (still supported)                     |
+| ----------- | ------------------------------------- | -------------------------------------------- |
 | Run by name | `fc-cli run --col "Regression Tests"` | `fc-cli run --col --name "Regression Tests"` |
-| Run by ID | `fc-cli run --col <collection-id>` | `fc-cli run --col --id <collection-id>` |
+| Run by ID   | `fc-cli run --col <collection-id>`    | `fc-cli run --col --id <collection-id>`      |
 
 <div align="center">
   <br />
@@ -168,27 +169,27 @@ fc-cli run --file collection.json
 
 ### Folder
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
+| Action      | Preferred                                                  | Legacy (still supported)                                          |
+| ----------- | ---------------------------------------------------------- | ----------------------------------------------------------------- |
 | Run by name | `fc-cli run --file collection.json --fol "Authentication"` | `fc-cli run --file collection.json --fol --name "Authentication"` |
-| Run by ID | `fc-cli run --file collection.json --fol <folder-id>` | `fc-cli run --file collection.json --fol --id <folder-id>` |
+| Run by ID   | `fc-cli run --file collection.json --fol <folder-id>`      | `fc-cli run --file collection.json --fol --id <folder-id>`        |
 
 ### Request
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
-| Run by name | `fc-cli run --file collection.json --req "Login"` | `fc-cli run --file collection.json --req --name "Login"` |
-| Run by ID | `fc-cli run --file collection.json --req <request-id>` | `fc-cli run --file collection.json --req --id <request-id>` |
+| Action      | Preferred                                              | Legacy (still supported)                                    |
+| ----------- | ------------------------------------------------------ | ----------------------------------------------------------- |
+| Run by name | `fc-cli run --file collection.json --req "Login"`      | `fc-cli run --file collection.json --req --name "Login"`    |
+| Run by ID   | `fc-cli run --file collection.json --req <request-id>` | `fc-cli run --file collection.json --req --id <request-id>` |
 
 ### Override Variables
 
 Replace the embedded variables using another exported Variable Set.
 
-| Action | Command |
-| ------ | ------- |
-| Override collection variables | `fc-cli run --file collection.json --var-file variables.json` |
-| Override folder variables | `fc-cli run --file collection.json --fol "Authentication" --var-file variables.json` |
-| Override request variables | `fc-cli run --file collection.json --req "Login" --var-file variables.json` |
+| Action                        | Command                                                                              |
+| ----------------------------- | ------------------------------------------------------------------------------------ |
+| Override collection variables | `fc-cli run --file collection.json --var-file variables.json`                        |
+| Override folder variables     | `fc-cli run --file collection.json --fol "Authentication" --var-file variables.json` |
+| Override request variables    | `fc-cli run --file collection.json --req "Login" --var-file variables.json`          |
 
 :::info
 
@@ -216,24 +217,24 @@ By default, requests use the Variable Set linked to the collection. You can temp
 
 ### Request
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
-| Variable Set by name | `fc-cli run --req "Login" --var "QA Variables"` | `fc-cli run --req --name "Login" --var-name "QA Variables"` |
-| Variable Set by ID | `fc-cli run --req "Login" --var <variable-set-id>` | `fc-cli run --req --name "Login" --var-id <variable-set-id>` |
+| Action               | Preferred                                          | Legacy (still supported)                                     |
+| -------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| Variable Set by name | `fc-cli run --req "Login" --var "QA Variables"`    | `fc-cli run --req --name "Login" --var-name "QA Variables"`  |
+| Variable Set by ID   | `fc-cli run --req "Login" --var <variable-set-id>` | `fc-cli run --req --name "Login" --var-id <variable-set-id>` |
 
 ### Folder
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
-| Variable Set by name | `fc-cli run --fol "Authentication" --var "QA Variables"` | `fc-cli run --fol --name "Authentication" --var-name "QA Variables"` |
-| Variable Set by ID | `fc-cli run --fol "Authentication" --var <variable-set-id>` | `fc-cli run --fol --name "Authentication" --var-id <variable-set-id>` |
+| Action               | Preferred                                                   | Legacy (still supported)                                              |
+| -------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------- |
+| Variable Set by name | `fc-cli run --fol "Authentication" --var "QA Variables"`    | `fc-cli run --fol --name "Authentication" --var-name "QA Variables"`  |
+| Variable Set by ID   | `fc-cli run --fol "Authentication" --var <variable-set-id>` | `fc-cli run --fol --name "Authentication" --var-id <variable-set-id>` |
 
 ### Collection
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
-| Variable Set by name | `fc-cli run --col "Regression Tests" --var "QA Variables"` | `fc-cli run --col --name "Regression Tests" --var-name "QA Variables"` |
-| Variable Set by ID | `fc-cli run --col "Regression Tests" --var <variable-set-id>` | `fc-cli run --col --name "Regression Tests" --var-id <variable-set-id>` |
+| Action               | Preferred                                                     | Legacy (still supported)                                                |
+| -------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Variable Set by name | `fc-cli run --col "Regression Tests" --var "QA Variables"`    | `fc-cli run --col --name "Regression Tests" --var-name "QA Variables"`  |
+| Variable Set by ID   | `fc-cli run --col "Regression Tests" --var <variable-set-id>` | `fc-cli run --col --name "Regression Tests" --var-id <variable-set-id>` |
 
 :::warning Variable Set Priority
 
@@ -290,22 +291,22 @@ Use the `--export` option to generate a report after execution completes.
 
 ### Export Examples
 
-| Action | Preferred | Legacy (still supported) |
-| ------ | --------- | ------------------------ |
-| Export a request report | `fc-cli run --req "Login" --export html` | `fc-cli run --req --name "Login" --export html` |
-| Export a collection report | `fc-cli run --col "Regression Tests" --export json` | `fc-cli run --col --name "Regression Tests" --export json` |
-| Export all collections | `fc-cli run --col --all --export xml` | Same |
-| Export an exported collection | `fc-cli run --file collection.json --export html` | Same |
-| Export a folder from an exported collection | `fc-cli run --file collection.json --fol "Authentication" --export json` | `fc-cli run --file collection.json --fol --name "Authentication" --export json` |
-| Export a request from an exported collection | `fc-cli run --file collection.json --req "Login" --export xml` | `fc-cli run --file collection.json --req --name "Login" --export xml` |
+| Action                                       | Preferred                                                                | Legacy (still supported)                                                        |
+| -------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| Export a request report                      | `fc-cli run --req "Login" --export html`                                 | `fc-cli run --req --name "Login" --export html`                                 |
+| Export a collection report                   | `fc-cli run --col "Regression Tests" --export json`                      | `fc-cli run --col --name "Regression Tests" --export json`                      |
+| Export all collections                       | `fc-cli run --col --all --export xml`                                    | Same                                                                            |
+| Export an exported collection                | `fc-cli run --file collection.json --export html`                        | Same                                                                            |
+| Export a folder from an exported collection  | `fc-cli run --file collection.json --fol "Authentication" --export json` | `fc-cli run --file collection.json --fol --name "Authentication" --export json` |
+| Export a request from an exported collection | `fc-cli run --file collection.json --req "Login" --export xml`           | `fc-cli run --file collection.json --req --name "Login" --export xml`           |
 
 ### 📁 Export to a Custom Folder
 
 Use `--export-path` to specify where reports are saved.
 
-| Action | Command |
-| ------ | ------- |
-| Export all collections | `fc-cli run --col --all --export json --export-path "./reports"` |
+| Action                        | Command                                                                     |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| Export all collections        | `fc-cli run --col --all --export json --export-path "./reports"`            |
 | Export an exported collection | `fc-cli run --file collection.json --export html --export-path "./reports"` |
 
 :::info
@@ -324,13 +325,13 @@ The simplified syntax is recommended for all new commands and scripts.
 
 For compatibility with existing automation and CI/CD pipelines, the legacy options continue to be fully supported.
 
-| Preferred | Legacy |
-| ---------- | ------ |
-| `--req "Login"` | `--req --name "Login"` |
-| `--req <request-id>` | `--req --id <request-id>` |
-| `--fol "Authentication"` | `--fol --name "Authentication"` |
-| `--fol <folder-id>` | `--fol --id <folder-id>` |
+| Preferred                  | Legacy                            |
+| -------------------------- | --------------------------------- |
+| `--req "Login"`            | `--req --name "Login"`            |
+| `--req <request-id>`       | `--req --id <request-id>`         |
+| `--fol "Authentication"`   | `--fol --name "Authentication"`   |
+| `--fol <folder-id>`        | `--fol --id <folder-id>`          |
 | `--col "Regression Tests"` | `--col --name "Regression Tests"` |
-| `--col <collection-id>` | `--col --id <collection-id>` |
-| `--var "QA Variables"` | `--var-name "QA Variables"` |
-| `--var <variable-set-id>` | `--var-id <variable-set-id>` |
+| `--col <collection-id>`    | `--col --id <collection-id>`      |
+| `--var "QA Variables"`     | `--var-name "QA Variables"`       |
+| `--var <variable-set-id>`  | `--var-id <variable-set-id>`      |

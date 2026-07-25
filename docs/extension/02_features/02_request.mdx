@@ -17,27 +17,23 @@ Creating a request only takes a few steps:
 5. Add headers, query parameters, or a request body.
 6. Click **Send**.
 
-
 ## 🌐 HTTP Methods
 
 Fetch Client supports all standard HTTP methods.
 
-| Method | Description | Common Use |
-|---------|-------------|------------|
-| **GET** | Retrieve data | Fetch users |
-| **POST** | Create resources | Create a user |
-| **PUT** | Replace resources | Update a user |
-| **PATCH** | Partially update resources | Change an email |
-| **DELETE** | Remove resources | Delete a user |
-| **HEAD** | Retrieve headers only | Check resource availability |
-| **OPTIONS** | Discover supported methods | API capabilities |
-
+| Method      | Description                | Common Use                  |
+| ----------- | -------------------------- | --------------------------- |
+| **GET**     | Retrieve data              | Fetch users                 |
+| **POST**    | Create resources           | Create a user               |
+| **PUT**     | Replace resources          | Update a user               |
+| **PATCH**   | Partially update resources | Change an email             |
+| **DELETE**  | Remove resources           | Delete a user               |
+| **HEAD**    | Retrieve headers only      | Check resource availability |
+| **OPTIONS** | Discover supported methods | API capabilities            |
 
 ## 🔗 URL & Query Parameters
 
 Query parameters allow you to pass additional information in the URL.
-
-**Example**
 
 ```text
 https://api.example.com/users?page=1&limit=10
@@ -50,18 +46,17 @@ To add query parameters:
 3. Enter the parameter name and value.
 4. The request URL updates automatically.
 
-
 ## 🔐 Authentication
 
 Fetch Client supports multiple authentication methods.
 
-| Authentication | Best For |
-|----------------|----------|
-| Basic Auth | Username & Password |
-| Bearer Token | JWT & Access Tokens |
-| API Key | Header or Query authentication |
-| AWS Signature | AWS APIs |
-| OAuth 2.0 | Enterprise authentication |
+| Authentication | Best For                       |
+| -------------- | ------------------------------ |
+| Basic Auth     | Username & Password            |
+| Bearer Token   | JWT & Access Tokens            |
+| API Key        | Header or Query authentication |
+| AWS Signature  | AWS APIs                       |
+| OAuth 2.0      | Enterprise authentication      |
 
 ### Basic Auth
 
@@ -131,7 +126,6 @@ Uses the OAuth 2.0 protocol to securely obtain and use access tokens.
 5. Click **Get New Token**.
 6. Fetch Client completes the authorization flow, retrieves the access token, and automatically includes it in the `Authorization` header for subsequent requests.
 
-
 ## 📝 Headers
 
 Headers provide additional metadata for requests.
@@ -151,18 +145,17 @@ Features:
 - Enable/Disable headers
 - Automatic Content-Type detection
 
-
 ## 📦 Request Body
 
 Choose the request body format that matches your API.
 
-| Type | Description |
-|------|-------------|
-| Form Data | Upload files and form fields |
-| Form URL Encoded | HTML form submissions |
-| Raw | JSON, XML, Text |
-| Binary | Upload a file |
-| GraphQL | GraphQL queries & variables |
+| Type             | Description                  |
+| ---------------- | ---------------------------- |
+| Form Data        | Upload files and form fields |
+| Form URL Encoded | HTML form submissions        |
+| Raw              | JSON, XML, Text              |
+| Binary           | Upload a file                |
+| GraphQL          | GraphQL queries & variables  |
 
 ### Form Data
 
@@ -220,7 +213,6 @@ query GetUser($id: ID!) {
 }
 ```
 
-
 ## 🌍 Variables
 
 Variables can be used throughout requests.
@@ -240,15 +232,15 @@ Supported variable scopes:
 - Environment Variables
 - System Variables
 
-
 :::tip
+
 - Use environments instead of hardcoded URLs.
 - Store secrets in variables.
 - Save frequently used requests into collections.
 - Reuse authentication with variables.
 - Add tests to validate responses automatically.
-:::
 
+:::
 
 ## ➡️ Next Steps
 

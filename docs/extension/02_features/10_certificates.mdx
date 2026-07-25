@@ -60,11 +60,10 @@ Send Request
 
 Fetch Client supports both **PEM** and **PFX (PKCS#12)** client certificates.
 
-| Certificate Type | Required Files | Description |
-| ---------------- | -------------- | ----------- |
-| **PEM** | Certificate (`.pem`/`.crt`) + Private Key (`.key`) | Standard OpenSSL certificate format. |
-| **PFX** | Single `.pfx` or `.p12` file | Contains both the certificate and private key. |
-
+| Certificate Type | Required Files                                     | Description                                    |
+| ---------------- | -------------------------------------------------- | ---------------------------------------------- |
+| **PEM**          | Certificate (`.pem`/`.crt`) + Private Key (`.key`) | Standard OpenSSL certificate format.           |
+| **PFX**          | Single `.pfx` or `.p12` file                       | Contains both the certificate and private key. |
 
 ## 🌐 Host Matching
 
@@ -114,10 +113,10 @@ If multiple wildcard certificates match a hostname, Fetch Client selects the **m
 
 Example:
 
-| Configured Host | Request | Selected |
-| --------------- | ------- | -------- |
-| `*.company.com` | `api.dev.company.com` | ❌ |
-| `*.dev.company.com` | `api.dev.company.com` | ✅ |
+| Configured Host     | Request               | Selected |
+| ------------------- | --------------------- | -------- |
+| `*.company.com`     | `api.dev.company.com` | ❌       |
+| `*.dev.company.com` | `api.dev.company.com` | ✅       |
 
 The longest matching wildcard pattern always takes precedence.
 
@@ -133,9 +132,9 @@ When making an HTTPS request, Fetch Client searches for certificates in the foll
 
 Fetch Client allows you to enable or disable server certificate verification.
 
-| Setting | Behavior |
-| ------- | -------- |
-| **Enabled** | Validates the server certificate against trusted Certificate Authorities (recommended). |
+| Setting      | Behavior                                                                                                   |
+| ------------ | ---------------------------------------------------------------------------------------------------------- |
+| **Enabled**  | Validates the server certificate against trusted Certificate Authorities (recommended).                    |
 | **Disabled** | Skips server certificate validation. Useful when working with self-signed certificates during development. |
 
 :::warning
@@ -187,12 +186,12 @@ If the file cannot be loaded, the request fails with an error.
 
 ## ❌ Common Errors
 
-| Error | Cause |
-| ------ | ----- |
+| Error                                   | Cause                                       |
+| --------------------------------------- | ------------------------------------------- |
 | `Invalid PEM certificate configuration` | Certificate or private key path is missing. |
-| `Invalid PFX certificate configuration` | PFX file path is missing. |
-| `Unable to load certificate` | Certificate file could not be read. |
-| `ENOENT` | Certificate file does not exist. |
+| `Invalid PFX certificate configuration` | PFX file path is missing.                   |
+| `Unable to load certificate`            | Certificate file could not be read.         |
+| `ENOENT`                                | Certificate file does not exist.            |
 
 ## 📝 Configuration Examples
 
@@ -236,54 +235,54 @@ TLS certificates are configured through the **Fetch Client Settings** in Visual 
 
 <div align="center">
   <img src="/img/tls-configuration.png?raw=true" alt="TLS Configration" />
-  <br/>
-  <br/>
+  <br />
+  <br />
 </div>
 
 Alternatively, you can edit your `settings.json` file directly.
 
 <div align="center">
   <img src="/img/tls-configuration-1.png?raw=true" alt="TLS Configration" />
-  <br/>
-  <br/>
+  <br />
+  <br />
 </div>
 
 ### 📝 Example Configuration
 
 ```json
 {
-    "fetch-client.SSLCheck": true,
-    "fetch-client.tlsConfiguration": [
-        {
-            "host": "api.company.com",
-            "type": "pem",
-            "certPath": "C:\\certs\\client.pem",
-            "keyPath": "C:\\certs\\client.key",
-            "passphrase": "secret",
-            "enabled": true
-        },
-        {
-            "host": "*.internal.company.com",
-            "type": "pfx",
-            "pfxPath": "C:\\certs\\client.pfx",
-            "passphrase": "secret",
-            "enabled": true
-        }
-    ]
+  "fetch-client.SSLCheck": true,
+  "fetch-client.tlsConfiguration": [
+    {
+      "host": "api.company.com",
+      "type": "pem",
+      "certPath": "C:\\certs\\client.pem",
+      "keyPath": "C:\\certs\\client.key",
+      "passphrase": "secret",
+      "enabled": true
+    },
+    {
+      "host": "*.internal.company.com",
+      "type": "pfx",
+      "pfxPath": "C:\\certs\\client.pfx",
+      "passphrase": "secret",
+      "enabled": true
+    }
+  ]
 }
 ```
 
 ### ⚙️ Configuration Options
 
-| Property | Required | Description |
-| -------- | :------: | ----------- |
-| `host` | ✅ | Exact hostname or wildcard hostname used to select the client certificate (for example `api.company.com` or `*.company.com`). |
-| `type` | ✅ | Certificate format. Supported values are `pem` and `pfx`. |
-| `certPath` | PEM | Absolute path to the client certificate file. |
-| `keyPath` | PEM | Absolute path to the private key file. |
-| `pfxPath` | PFX | Absolute path to the PFX/PKCS#12 file. |
-| `passphrase` | No | Passphrase used to decrypt the private key or PFX file, if required. |
-| `enabled` | No | Enables or disables the certificate. Defaults to `true`. |
+| Property     | Required | Description                                                                                                                   |
+| ------------ | :------: | ----------------------------------------------------------------------------------------------------------------------------- |
+| `host`       |    ✅    | Exact hostname or wildcard hostname used to select the client certificate (for example `api.company.com` or `*.company.com`). |
+| `type`       |    ✅    | Certificate format. Supported values are `pem` and `pfx`.                                                                     |
+| `certPath`   |   PEM    | Absolute path to the client certificate file.                                                                                 |
+| `keyPath`    |   PEM    | Absolute path to the private key file.                                                                                        |
+| `pfxPath`    |   PFX    | Absolute path to the PFX/PKCS#12 file.                                                                                        |
+| `passphrase` |    No    | Passphrase used to decrypt the private key or PFX file, if required.                                                          |
+| `enabled`    |    No    | Enables or disables the certificate. Defaults to `true`.                                                                      |
 
 :::info
 💡 Multiple certificates can be configured. Fetch Client automatically selects the appropriate certificate based on the request hostname.

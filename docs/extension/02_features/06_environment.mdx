@@ -100,8 +100,8 @@ This feature is useful for workflows where you need to:
 
 <div align="center">
   <img src="/img/setvar.png?raw=true" alt="assign variables" />
-  <br/>
-  <br/>
+  <br />
+  <br />
 </div>
 
 ## 🧮 Expression Engine
@@ -122,24 +122,23 @@ retryCount < 5
 status == "ACTIVE"
 ```
 
-
 ### 🗂️ Supported Data Types
 
-| Function | Description | Example |
-|----------|-------------|---------|
-| `now()` | Current timestamp | `now()` |
-| `date()` | Current date/time | `date()` |
-| `parseDate()` | Convert string to timestamp | `parseDate("2026-07-20")` |
-| `seconds()` | Convert seconds to milliseconds | `seconds(30)` |
-| `minutes()` | Convert minutes to milliseconds | `minutes(5)` |
-| `hours()` | Convert hours to milliseconds | `hours(2)` |
-| `days()` | Convert days to milliseconds | `days(7)` |
-| `addDays()` | Add days | `addDays(now(), 7)` |
-| `addHours()` | Add hours | `addHours(now(), 2)` |
-| `addMinutes()` | Add minutes | `addMinutes(now(), 30)` |
-| `formatDate()` | Format date | `formatDate(now(), "yyyy-MM-dd")` |
-| `contains()` | Contains text | `contains(name, "John")` |
-| `matches()` | Regex match | `matches(email, ".*@gmail.com")` |
-| `exists()` | Value exists | `exists(token)` |
-| `empty()` | Value is empty | `empty(token)` |
-| `between()` | Value within range | `between(age, 18, 60)` |
+| Function       | Description                     | Example                           |
+| -------------- | ------------------------------- | --------------------------------- |
+| `now()`        | Current timestamp               | `now()`                           |
+| `date()`       | Current date/time               | `date()`                          |
+| `parseDate()`  | Convert string to timestamp     | `parseDate("2026-07-20")`         |
+| `seconds()`    | Convert seconds to milliseconds | `seconds(30)`                     |
+| `minutes()`    | Convert minutes to milliseconds | `minutes(5)`                      |
+| `hours()`      | Convert hours to milliseconds   | `hours(2)`                        |
+| `days()`       | Convert days to milliseconds    | `days(7)`                         |
+| `addDays()`    | Add days                        | `addDays(now(), 7)`               |
+| `addHours()`   | Add hours                       | `addHours(now(), 2)`              |
+| `addMinutes()` | Add minutes                     | `addMinutes(now(), 30)`           |
+| `formatDate()` | Format date                     | `formatDate(now(), "yyyy-MM-dd")` |
+| `contains()`   | Contains text                   | `contains(name, "John")`          |
+| `matches()`    | Regex match                     | `matches(email, ".*@gmail.com")`  |
+| `exists()`     | Value exists                    | `exists(token)`                   |
+| `empty()`      | Value is empty                  | `empty(token)`                    |
+| `between()`    | Value within range              | `between(age, 18, 60)`            |

@@ -83,7 +83,8 @@ const FeatureList: FeatureItem[] = [
     link: "./docs/extension/features/advanced/performance-testing",
     description: (
       <>
-        Simulate concurrent users to measure API performance, throughput, and response times.
+        Simulate concurrent users to measure API performance, throughput, and
+        response times.
       </>
     ),
   },
@@ -93,7 +94,8 @@ const FeatureList: FeatureItem[] = [
     link: "./docs/extension/features/advanced/data-driven-testing",
     description: (
       <>
-        Execute API requests with multiple datasets for efficient data-driven testing.
+        Execute API requests with multiple datasets for efficient data-driven
+        testing.
       </>
     ),
   },
@@ -102,9 +104,7 @@ const FeatureList: FeatureItem[] = [
     png: require("@site/static/img/cli-logo.png").default,
     link: "./docs/cli/introduction",
     description: (
-      <>
-        Command line for automation, scripting, and CI/CD integration.
-      </>
+      <>Command line for automation, scripting, and CI/CD integration.</>
     ),
   },
 ];
