@@ -2,11 +2,11 @@
 slug: /extension/features/advanced/auto-requests
 ---
 
-# Auto Requests (Scheduled Requests)
+# Scheduled Runs
 
 ## 🚀 Overview
 
-Auto Requests lets you run API requests on a schedule. It is useful when you want to test an API for a longer time without sending requests by hand.
+Scheduled Runs lets you run API requests on a schedule. It is useful when you want to test an API for a longer time without sending requests by hand.
 
 ## ✨ Key Features
 
@@ -28,12 +28,26 @@ Auto Requests lets you run API requests on a schedule. It is useful when you wan
 The system then sends the request based on your settings.
 
 <div align="center">
-  <img src="/img/autorequest-menu.png?raw=true" alt="Auto Request menu" />
+  <img src="/img/autorequest-menu.png?raw=true" alt="Auto Request menu" width="250" />
+   <br />
+  <sup>
+    <b>Global Level</b>
+  </sup>
   <br />
+  <br />
+</div>
+
+<div align="center">
+  <img src="/img/autorequest-menu-1.png?raw=true" alt="Auto Request menu" width="250"/>
+   <br />
+  <sup>
+    <b>Collection Level</b>
+  </sup>
 </div>
 
 ## ⚙️ Configuration Options
 
+  Schedule the requests with below configuration.
     * Interval (minutes) - Time between each request run
     * Duration (minutes) - Total time the request will run
     * Multi-Request Support - You can add up to 5 requests
@@ -48,9 +62,15 @@ The system then sends the request based on your settings.
     * A request runs again and again based on the interval.
     * It stops automatically when duration ends.
 
+<div align="center">
+  <img src="/img/autorequest-summary.png?raw=true" alt="Auto Request" width="850" />
+  <br />
+</div>
+
 ## ⚠️ Important Notes
 
 - Maximum 5 requests can run at one time.
+- Only one schedule can be active at a time.
 - Do not use PreFetch requests inside Auto Requests.
 - PreFetch requests are not executed if available.
 - Invalid inputs are highlighted in the UI.

@@ -82,11 +82,11 @@ const config: Config = {
             },
           ],
         },
-        {
-          to: "/blog",
-          label: "Blog",
-          position: "left",
-        },
+        // {
+        //   to: "/blog",
+        //   label: "Blog",
+        //   position: "left",
+        // },
         {
           href: "https://ganesan-chandran.github.io/",
           position: "right",
@@ -103,7 +103,7 @@ const config: Config = {
     },
     footer: {
       style: "dark",
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://ganesan-chandran.github.io/" target="_blank" rel="noopener noreferrer">Ganesan Chandran</a>.<br/><br/>Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://ganesan-chandran.github.io/" target="_blank" rel="noopener noreferrer">Ganesan Chandran</a>.<br/><br/><a href="/docs/credits">Credits & Attributions</a>.`,
     },
     prism: {
       theme: prismThemes.github,

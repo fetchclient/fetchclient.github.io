@@ -6,7 +6,7 @@ slug: /extension/features/advanced/performance-testing
 
 Run load tests against a single request or an entire collection/folder, directly from the extension. Simulate multiple concurrent users, ramp load up gradually, sustain traffic for a fixed duration, and see response-time percentiles, throughput, and error rates as the test runs.
 
-## Opening the Performance Test panel
+## 📂 Opening the Performance Test panel
 
 You can start a performance test from either level of your workspace:
 
@@ -14,20 +14,40 @@ You can start a performance test from either level of your workspace:
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | Right-click a **Collection** or **Folder** → _Tools → Performance Test_ | Whole Collection / Folder (you choose which requests to include) |
 
+<div align="center">
+  <br />
+  <img
+    src="/img/perf-test-menu.png?raw=true"
+    alt="Performance Test Menu"
+    width={275}
+  />
+  <br />
+  <br />
+</div>
+
 The panel opens with two tabs: **Setup** (configure the test) and **Results** (live dashboard, populated once you start).
 
-## Choosing a scope
+<div align="center">
+  <br />
+  <img
+    src="/img/perf-test-setup.png?raw=true"
+    alt="Performance Test Setup"
+  />
+  <br />
+</div>
+
+## 🎯 Choosing a scope
 
 - **Single Request** - every virtual user repeatedly calls one endpoint. Best for isolating how a specific API holds up under load.
 - **Whole Collection / Folder** - every virtual user runs through all the _selected_ requests in the collection, concurrently with every other virtual user. Use the checkbox table in Setup to include/exclude individual requests.
 
 > **Note:** Collection/Folder **pre-request scripts do not run** during a performance test. Requests execute directly, without pre-request setup, to keep load generation predictable and avoid it becoming a bottleneck itself.
 
-## Load models
+## ⚙️ Load models
 
 The load model controls how many concurrent **virtual users (VUs)** are hitting your endpoint(s) at any given moment, and when the test stops. There are four:
 
-### 1. Fixed Iterations
+### 1. 🔄 Fixed Iterations
 
 A constant number of virtual users repeats the request(s) a set number of times, then the test ends.
 
@@ -36,7 +56,7 @@ A constant number of virtual users repeats the request(s) a set number of times,
 
 Use this when you want a **predictable, repeatable** test - e.g. "50 users, 20 requests each, every time I run this."
 
-### 2. Duration
+### 2. ⏱️ Duration
 
 A constant number of virtual users keeps sending requests continuously until a time limit is reached.
 
@@ -45,7 +65,7 @@ A constant number of virtual users keeps sending requests continuously until a t
 
 Use this for a **steady-state soak test** - e.g. "hold 30 concurrent users for 5 minutes and see if performance degrades or errors creep in over time."
 
-### 3. Ramp-up
+### 3. 📈 Ramp-up
 
 Concurrency starts low and increases in steps until it reaches your target, then the test stops as soon as the ramp finishes.
 
@@ -55,7 +75,7 @@ Concurrency starts low and increases in steps until it reaches your target, then
 
 Use this to find **where things start to break** - e.g. "gradually increase load and tell me at what concurrency response times spike or errors begin."
 
-### 4. Ramp-up + Duration
+### 4. 📊 Ramp-up + Duration
 
 Combines the two: ramps up exactly like Ramp-up mode, but instead of stopping once it reaches target concurrency, it **holds** there for an additional duration.
 
@@ -64,7 +84,7 @@ Combines the two: ramps up exactly like Ramp-up mode, but instead of stopping on
 
 Use this for the most realistic **production-like load test** - e.g. "ramp up to 100 users over 2 minutes, then hold 100 users for 10 minutes."
 
-## Settings reference
+## 📝 Settings reference
 
 | Setting                              | Applies to                  | Description                                          | Max        |
 | ------------------------------------ | --------------------------- | ---------------------------------------------------- | ---------- |
@@ -78,16 +98,7 @@ Use this for the most realistic **production-like load test** - e.g. "ramp up to
 
 All settings are locked once a test is running - stop the test to change configuration.
 
-<div align="center">
-  <br />
-  <img
-    src="/img/perf-test-settings.png?raw=true"
-    alt="Performance Test Setup"
-  />
-  <br />
-</div>
-
-## Running a test
+## ▶️ Running a test
 
 1. Go to the **Setup** tab.
 2. Choose your **Scope** and select the request(s).
@@ -97,9 +108,9 @@ All settings are locked once a test is running - stop the test to change configu
 6. Click **Stop** at any time to cancel early - results gathered so far are kept and can still be exported.
 7. When the test finishes (or you stop it), the status changes to **Completed** or **Cancelled**, and the **Export** button becomes available.
 
-## Reading the results
+## 📊 Reading the results
 
-### Summary cards
+### 📋 Summary cards
 
 | Card           | Meaning                                                                      |
 | -------------- | ---------------------------------------------------------------------------- |
@@ -114,7 +125,7 @@ All settings are locked once a test is running - stop the test to change configu
 
 **Why percentiles matter more than averages:** an average can hide a small number of very slow requests. P95/P99 tell you what your _slowest real users_ are experiencing - a much better indicator of perceived performance than the average alone.
 
-### Response Time Trend chart
+### 📉 Response Time Trend chart
 
 A running line chart of individual response times over the course of the test. Useful for spotting:
 
@@ -122,7 +133,7 @@ A running line chart of individual response times over the course of the test. U
 - Sudden spikes tied to a specific point in a ramp-up
 - Instability (a consistently jagged, wide-ranging line)
 
-### Breakdown by Request
+### 🧩 Breakdown by Request
 
 Shown automatically whenever more than one distinct request is in scope (i.e. Whole Collection/Folder mode with multiple requests selected). Gives per-endpoint numbers - total, errors, average, P95, and RPS - so you can identify **which specific endpoint** is the bottleneck rather than only seeing an aggregate.
 
@@ -133,16 +144,26 @@ Shown automatically whenever more than one distinct request is in scope (i.e. Wh
     alt="Performance Test Results"
   />
   <br />
+  <br />
+  <img
+    src="/img/perf-test-breakdown.png?raw=true"
+    alt="Performance Test Results"
+  />
+  <br />
 </div>
 
-## Exporting results
+## 📤 Exporting results
 
 Once a test is **Completed** or **Cancelled**, use the **Export** dropdown in the footer:
 
-- **JSON** - full export including your test configuration, the summary metrics, the per-endpoint breakdown, and every individual raw result. Best for archiving a full run or feeding into another analysis tool.
-- **CSV** - summary metrics and per-endpoint breakdown in a spreadsheet-friendly format. Best for quick sharing or comparing runs side by side in Excel/Sheets.
+| Format   | Best for                                                                                                    |
+| -------- | -------------------------------------------------------------------------------------------------------------- |
+| **JSON** | A complete record of the run - your test configuration, summary metrics, per-endpoint breakdown, and every individual raw result. Good for archiving a full run or feeding into another analysis tool. |
+| **CSV**  | Summary metrics and per-endpoint breakdown in a spreadsheet-friendly format. Good for quick sharing or comparing runs side by side in Excel/Sheets. |
+| **HTML** | A shareable, readable report you can open in a browser or send to teammates. |
+| **XML**  | A structured export for tools that expect XML. |
 
-## Choosing the right load model - quick guide
+## 💡 Choosing the right load model - quick guide
 
 | Your goal                                                           | Use this model     |
 | ------------------------------------------------------------------- | ------------------ |
@@ -151,7 +172,7 @@ Once a test is **Completed** or **Cancelled**, use the **Export** dropdown in th
 | "At what point does this start to break?"                           | Ramp-up            |
 | "Simulate real-world traffic building up to peak and staying there" | Ramp-up + Duration |
 
-## Limitations
+## ⚠️ Limitations
 
 - **Maximum 50 concurrent virtual users** per test, to keep load generation from overwhelming your own machine or network.
 - **Pre-request scripts are skipped** for both scopes during a performance test.
