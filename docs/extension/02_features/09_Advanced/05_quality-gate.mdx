@@ -22,7 +22,9 @@ Every rule is listed, grouped by dimension, with a checkbox. Use it to permanent
 - Each rule row shows its name, description, and default severity badge.
 - Selections are written to `.qgrc.json` at the workspace root (`disabledRules`) as soon as you toggle a checkbox, and are picked up by every run for that workspace.
 
-> **Note:** disabling a rule here removes it from evaluation entirely - it produces no issue and isn't counted anywhere, including in exports. If you want a rule to still be evaluated and audited, use an inline `@qg-disable` tag instead (see [Suppressing rules](#-suppressing-rules) below).
+:::info
+**Note:** disabling a rule here removes it from evaluation entirely - it produces no issue and isn't counted anywhere, including in exports. If you want a rule to still be evaluated and audited, use an inline `@qg-disable` tag instead (see [Suppressing rules](#-suppressing-rules) below).
+:::
 
 ## 📋 Requests tab
 
