@@ -4,11 +4,22 @@ slug: /extension/features/quick-access
 
 # Quick Access
 
-The **Quick Access** sidebar helps you organize, reuse, and manage your API requests. It includes three sections:
+The **Quick Access** sidebar helps you organize, reuse, and manage your API requests. It includes below four tabs and **Environment Variable Selector** dropdown:
 
 - 📜 History
 - 📋 Collections
 - 🌍 Variables
+- 🌐 Mock Server
+
+<br />
+<div
+  align="center"
+  style={{ display: "flex", justifyContent: "center", gap: "20px" }}
+>
+  <div style={{ textAlign: "center" }}>
+    <img src="/img/quick-access.png?raw=true" alt="Quick Access" />
+  </div>
+</div>
 
 ## 📜 History
 
@@ -198,6 +209,28 @@ Variables can be used in:
 - Tests
 
 > Learn more in [**Environment Variables**](./06_environment.mdx).
+
+---
+
+## 🌐 Mock Server
+
+Spin up a lightweight local HTTP server, right from the extension, that returns pre-defined responses for any route.
+Useful for prototyping against an API that doesn't exist yet, developing against a flaky or rate-limited backend, or reproducing a specific edge case
+(an error, a slow response, a conditional payload) on demand - without touching a real server.
+
+> Learn more in [**Mock Server**](./09_Advanced/07_mock-server.mdx).
+
+---
+
+## 🌍 Environment Selector
+
+The Environment dropdown in the sidebar controls the variable set used by requests that are not linked to a collection or folder variable.
+
+- Applies only to standalone requests or requests without an assigned variable.
+- Collection or folder variables always take precedence.
+- Switch environments instantly without modifying individual requests.
+
+Note: Changing the selected environment does not affect requests that already have a collection or folder variable assigned.
 
 ---
 

@@ -9,9 +9,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "docs/credits.mdx"
-      ],
+      "files": ["docs/credits.mdx"],
       "config": {
         "MD034": false
       }
