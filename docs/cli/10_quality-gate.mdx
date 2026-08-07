@@ -1,6 +1,6 @@
 ---
 id: quality-gate
-title: 🔬 Quality Gate
+title: 🔬 API Quality Gate
 description: Run automated API quality checks against a request, folder, collection, or exported collection using the Fetch Client CLI.
 sidebar_position: 10
 slug: /cli/quality-gate
@@ -18,19 +18,19 @@ fc-cli qc [options]
 
 ## ⚙️ Options
 
-| Option           | Description                                                          |
-| ---------------- | ---------------------------------------------------------------------- |
-| `--req`          | Quality check a request by name or ID                                  |
-| `--fol`          | Quality check a folder by name or ID                                   |
-| `--col`          | Quality check a collection by name or ID                               |
-| `--col --all`    | Quality check every collection                                         |
-| `--file`         | Quality check an exported collection                                   |
-| `--var`          | Override the Variable Set by name or ID                                |
-| `--var-file`     | Override variables for an exported collection                          |
-| `--rules`        | List all available quality-gate rules, grouped by dimension            |
-| `--config`       | Path to a `.qgrc.json` config file (default: `.qgrc.json` in the current directory, if present) |
-| `--export`       | Export the quality-gate report (`json`, `csv`, `html`, `xml`)          |
-| `--export-path`  | Directory where reports are saved                                      |
+| Option          | Description                                                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| `--req`         | Quality check a request by name or ID                                                           |
+| `--fol`         | Quality check a folder by name or ID                                                            |
+| `--col`         | Quality check a collection by name or ID                                                        |
+| `--col --all`   | Quality check every collection                                                                  |
+| `--file`        | Quality check an exported collection                                                            |
+| `--var`         | Override the Variable Set by name or ID                                                         |
+| `--var-file`    | Override variables for an exported collection                                                   |
+| `--rules`       | List all available quality-gate rules, grouped by dimension                                     |
+| `--config`      | Path to a `.qgrc.json` config file (default: `.qgrc.json` in the current directory, if present) |
+| `--export`      | Export the quality-gate report (`json`, `csv`, `html`, `xml`)                                   |
+| `--export-path` | Directory where reports are saved                                                               |
 
 ## 🎯 Supported scopes
 
@@ -43,21 +43,26 @@ Quality checks can be run against:
 
 ## 🚀 Basic usage
 
-| Action                                        | Command                                                          |
-| ---------------------------------------------- | ------------------------------------------------------------------ |
-| Check a request                                | `fc-cli qc --req "Login"`                                        |
-| Check a request by ID                          | `fc-cli qc --req <request-id>`                                    |
-| Check a folder                                 | `fc-cli qc --fol "Authentication"`                                |
-| Check a collection                             | `fc-cli qc --col "User APIs"`                                     |
-| Check every collection                         | `fc-cli qc --col --all`                                           |
-| Check an exported collection                   | `fc-cli qc --file collection.json`                                |
-| Check a folder from an exported collection     | `fc-cli qc --file collection.json --fol "Authentication"`         |
-| Check a request from an exported collection    | `fc-cli qc --file collection.json --req "Login"`                  |
-| Override the Variable Set                      | `fc-cli qc --col "User APIs" --var "Production"`                  |
-| Override variables for an exported collection  | `fc-cli qc --file collection.json --var-file variables.json`      |
-| List all rules                                 | `fc-cli qc --rules`                                                |
-| Use a custom config file                       | `fc-cli qc --col "User APIs" --config ./configs/strict.qgrc.json` |
-| Export a report                                | `fc-cli qc --col "User APIs" --export html`                       |
+| Action                                        | Command                                                           |
+| --------------------------------------------- | ----------------------------------------------------------------- |
+| Check a request                               | `fc-cli qc --req "Login"`                                         |
+| Check a request by ID                         | `fc-cli qc --req <request-id>`                                    |
+| Check a folder                                | `fc-cli qc --fol "Authentication"`                                |
+| Check a collection                            | `fc-cli qc --col "User APIs"`                                     |
+| Check every collection                        | `fc-cli qc --col --all`                                           |
+| Check an exported collection                  | `fc-cli qc --file collection.json`                                |
+| Check a folder from an exported collection    | `fc-cli qc --file collection.json --fol "Authentication"`         |
+| Check a request from an exported collection   | `fc-cli qc --file collection.json --req "Login"`                  |
+| Override the Variable Set                     | `fc-cli qc --col "User APIs" --var "Production"`                  |
+| Override variables for an exported collection | `fc-cli qc --file collection.json --var-file variables.json`      |
+| List all rules                                | `fc-cli qc --rules`                                               |
+| Use a custom config file                      | `fc-cli qc --col "User APIs" --config ./configs/strict.qgrc.json` |
+| Export a report                               | `fc-cli qc --col "User APIs" --export html`                       |
+
+<div align="center">
+  <img src="/img/cli/cli-qc-run.png?raw=true" alt="fc-cli qc" />
+</div>
+<br />
 
 ## 📦 Run an exported collection
 
@@ -101,7 +106,7 @@ fc-cli qc --rules
 
 Prints every registered rule, grouped by dimension, with its rule ID, default severity, name, and description:
 
-```
+```bash
 Quality Gate Rules (52)
 
  Security
@@ -114,6 +119,11 @@ Disable a rule via .qgrc.json { "disabledRules": ["<ruleId>"] }, or an inline "@
 ```
 
 This is a read-only listing - it doesn't require a scope (`--req`/`--col`/`--fol`/`--file`) and doesn't run anything.
+
+<div align="center">
+  <img src="/img/cli/cli-qc-rules.png?raw=true" alt="fc-cli qc" />
+</div>
+<br />
 
 ## ⚙️ Using a custom config file
 
@@ -143,7 +153,7 @@ Every request in scope is checked live on each `qc` run - there's no "use the la
 
 For each request, `qc` prints its score, verdict, an issue-severity breakdown, and a table of every issue found:
 
-```
+```bash
 Analyzing: POST /api/users
 
 Request: Create User
@@ -159,7 +169,7 @@ Request: Create User
 
 After every request in scope has run, a summary is printed:
 
-```
+```bash
 Quality Gate Summary
   Requests analyzed: 12   Aggregate Score: 78/100   Aggregate Verdict: CONDITIONAL_PASS
   CI Gate: FAILED
@@ -189,12 +199,12 @@ fc-cli qc --col "User APIs" --export html
 fc-cli qc --col "User APIs" --export json --export-path ./reports
 ```
 
-| Format | Description                                             |
-| ------ | --------------------------------------------------------- |
+| Format | Description                                                                               |
+| ------ | ----------------------------------------------------------------------------------------- |
 | JSON   | Complete quality-gate report - config used, every dimension/rule/issue, suppressed issues |
-| CSV    | Summary metrics in a spreadsheet-friendly format          |
-| HTML   | Interactive, shareable report                             |
-| XML    | Structured report for integrations                        |
+| CSV    | Summary metrics in a spreadsheet-friendly format                                          |
+| HTML   | Interactive, shareable report                                                             |
+| XML    | Structured report for integrations                                                        |
 
 If `--export-path` is omitted, reports are written to a `fetch-client-exports` folder alongside the Fetch Client database (or the current directory, when running from `--file`).
 

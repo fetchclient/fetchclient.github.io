@@ -14,19 +14,36 @@ Open **New Mock Server** to create one, or reopen an existing mock server to edi
 
 The header holds the server's identity and controls:
 
-| Field / Control | Notes |
-| --- | --- |
-| **Name** | Display name for the server |
-| **Port** | Must be between **1024 and 9999** - validated as you type, and again before Start/Save |
-| **Description** | Optional, free text |
-| **▶ Start / ■ Stop** | Toggles the server. Starting a server also saves it. |
-| **⚡ Generate** | Opens the route-generation modal (from a Collection or an OpenAPI spec) |
-| **Save** | Persists changes; enabled only when there's something unsaved |
-| **Delete** | Stops the server (if running) and removes it, after a confirmation prompt |
-| **Status bar** | A coloured dot plus a label: `Running on http://localhost:<port>`, `Stopped`, or `Error: <message>` |
+| Field / Control      | Notes                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+| **Name**             | Display name for the server                                                                         |
+| **Port**             | Must be between **1024 and 9999** - validated as you type, and again before Start/Save              |
+| **Description**      | Optional, free text                                                                                 |
+| **▶ Start / ■ Stop** | Toggles the server. Starting a server also saves it.                                                |
+| **⚡ Generate**      | Opens the route-generation modal (from a Collection or an OpenAPI spec)                             |
+| **Save**             | Persists changes; enabled only when there's something unsaved                                       |
+| **Delete**           | Stops the server (if running) and removes it, after a confirmation prompt                           |
+| **Status bar**       | A coloured dot plus a label: `Running on http://localhost:<port>`, `Stopped`, or `Error: <message>` |
+
+<div align="center">
+  <img src="/img/mock-server-ui.png?raw=true" alt="Mock server" width="850" />
+  <br />
+  <br />
+  <img
+    src="/img/mock-server-response.png?raw=true"
+    alt="Mock server"
+    width="850"
+  />
+  <br />
+  <br />
+</div>
 
 :::info
 While the server is **running**, Name, Port, Description, adding/deleting routes, Save, Delete, and Generate are all disabled - stop the server to change its configuration.
+:::
+
+:::tip
+**Changes to the mock server may take a few seconds to appear. Please wait briefly before refreshing or testing.**
 :::
 
 Below the header are two tabs: **Routes** and **Logs**.
@@ -40,12 +57,12 @@ A split view: the route list on the left, the selected route's editor on the rig
 
 ### Response tab
 
-| Setting | Options |
-| --- | --- |
-| Status code | `200 201 202 204 400 401 403 404 409 422 429 500 502 503` |
-| Body type | JSON, Text, XML, HTML, None |
-| Delay (ms) | `0`-`30000`, in steps of 50 - simulates network/processing latency before the response is sent |
-| Response Body | A raw text editor for the body (hidden entirely when Body type is **None**) |
+| Setting       | Options                                                                                        |
+| ------------- | ---------------------------------------------------------------------------------------------- |
+| Status code   | `200 201 202 204 400 401 403 404 409 422 429 500 502 503`                                      |
+| Body type     | JSON, Text, XML, HTML, None                                                                    |
+| Delay (ms)    | `0`-`30000`, in steps of 50 - simulates network/processing latency before the response is sent |
+| Response Body | A raw text editor for the body (hidden entirely when Body type is **None**)                    |
 
 ### Headers tab
 
@@ -61,22 +78,43 @@ If you set a header with the same key (e.g. a custom `Content-Type`), your value
 
 Lets a route only fire for requests whose **body** matches a pattern - useful for returning different responses from the same method + path depending on payload (e.g. a "duplicate email" error vs. a success response from the same `POST /users`).
 
-| Match type | Behaviour |
-| --- | --- |
-| None | Matcher disabled - route always matches (default) |
-| Exact | The entire incoming request body must equal the pattern exactly |
-| Contains | The incoming request body must contain the pattern as a substring |
-| JSON | The pattern is parsed as JSON and deep-compared against the incoming body - only the properties present in the pattern need to match; extra fields on the incoming body are ignored, and arrays are compared element-by-element |
+| Match type | Behaviour                                                                                                                                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| None       | Matcher disabled - route always matches (default)                                                                                                                                                                               |
+| Exact      | The entire incoming request body must equal the pattern exactly                                                                                                                                                                 |
+| Contains   | The incoming request body must contain the pattern as a substring                                                                                                                                                               |
+| JSON       | The pattern is parsed as JSON and deep-compared against the incoming body - only the properties present in the pattern need to match; extra fields on the incoming body are ignored, and arrays are compared element-by-element |
 
-When several routes share the same method and path, the server checks routes with an **enabled, matching** body matcher first; if none match, it falls back to the first route on that method + path with **no** body matcher configured. If nothing matches at all, the server returns a `404` with `{"error": "No matching mock route found."}`.
+When several routes share the same method and path, the server checks routes with an **enabled, matching** body matcher first;
+if none match, it falls back to the first route on that method + path with **no** body matcher configured. If nothing matches at all, the server returns a `404` with `{"error": "No matching mock route found."}`.
+
+<div align="center">
+  <img
+    src="/img/mock-server-request-match.png?raw=true"
+    alt="Mock server"
+    width="850"
+  />
+  <br />
+</div>
 
 ## 📊 Logs tab
 
-A live table of every request the running server has received: **Time**, **Method**, **Path**, **Status**, **Duration**, and **Match** (✓ if a configured route handled it, ✗ if it fell through to the `404` default). New entries stream in and the view auto-scrolls to the latest. **Clear** empties the log immediately (also on the server side). The log keeps the most recent **200** entries - older ones are dropped automatically, and the log resets each time the server is (re)started.
+A live table of every request the running server has received: **Time**, **Method**, **Path**, **Status**, **Duration**, and **Match** (✓ if a configured route handled it, ✗ if it fell through to the `404` default).
+New entries stream in and the view auto-scrolls to the latest. **Clear** empties the log immediately (also on the server side).
+The log keeps the most recent **200** entries - older ones are dropped automatically, and the log resets each time the server is (re)started.
 
 ## ⚡ Generating routes
 
 Instead of building routes by hand, generate a starting set from an existing source:
+
+<div align="center">
+  <img
+    src="/img/mock-server-generate.png?raw=true"
+    alt="Mock server"
+    width="850"
+  />
+  <br />
+</div>
 
 ### From Collection
 

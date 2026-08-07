@@ -107,6 +107,28 @@ const FeatureList: FeatureItem[] = [
       <>Command line for automation, scripting, and CI/CD integration.</>
     ),
   },
+  {
+    title: "API Quality Gate Test",
+    png: require("@site/static/img/quality-check.png").default,
+    link: "./docs/extension/features/advanced/api-quality-gate",
+    description: (
+      <>
+        Automatically validate API quality with assertions, performance
+        thresholds, and exit codes.
+      </>
+    ),
+  },
+  {
+    title: "Mock Server",
+    png: require("@site/static/img/mock-server.png").default,
+    link: "./docs/extension/features/advanced/mock-server",
+    description: (
+      <>
+        Create local mock APIs with customizable responses to test, and debug
+        without backend dependencies.
+      </>
+    ),
+  },
 ];
 
 function Feature({ title, png, description, link }: FeatureItem) {
