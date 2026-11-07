@@ -5,7 +5,8 @@ import type { PluginOptions } from "@easyops-cn/docusaurus-search-local";
 
 const config: Config = {
   title: "Fetch Client",
-  tagline: "REST API testing without leaving VS Code 🚀",
+  tagline:
+    "Free, open-source REST API testing, automation, and performance testing tool for VS Code.",
   favicon: "img/fetch-client.png",
   future: {
     v4: false,
@@ -20,6 +21,15 @@ const config: Config = {
     locales: ["en"],
   },
   trailingSlash: false,
+  headTags: [
+    {
+      tagName: "meta",
+      attributes: {
+        name: "google-site-verification",
+        content: "LrDDB9mQYh1I7RerDdFcOrpA3Si06S5LHlipKNbmTKY",
+      },
+    },
+  ],
   themes: [
     "@docusaurus/theme-mermaid",
     [
