@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fetchclient.github.io/sitemap.xml

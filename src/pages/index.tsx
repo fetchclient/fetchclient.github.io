@@ -55,14 +55,51 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://fetchclient.github.io/#organization",
+        name: "Fetch Client",
+        url: "https://fetchclient.github.io/",
+        logo: "https://fetchclient.github.io/img/fetch-client.png",
+        sameAs: [
+          "https://github.com/Ganesan-Chandran/vscode-fetch-client",
+          "https://marketplace.visualstudio.com/items?itemName=GanesanChandran.fetch-client",
+        ],
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Fetch Client",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Windows, macOS, Linux",
+        description:
+          "Free and open-source REST API client for Visual Studio Code with API testing, automation, data-driven testing, performance testing and CLI support.",
+        url: "https://fetchclient.github.io/",
+        image: "https://fetchclient.github.io/img/fetch-client.png",
+        codeRepository:
+          "https://github.com/Ganesan-Chandran/vscode-fetch-client",
+        isAccessibleForFree: true,
+        author: {
+          "@id": "https://fetchclient.github.io/#organization",
+        },
+      },
+    ],
+  };
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title="Fetch Client - Free REST API Client for VS Code"
+      description="Free, open-source REST API client for VS Code. Test and automate requests, run performance and data-driven tests, and execute API collections with the CLI."
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       <HomepageHeader />
-      <main>
+      <main className={styles.mainStyle}>
         <HomepageFeatures />
       </main>
     </Layout>
