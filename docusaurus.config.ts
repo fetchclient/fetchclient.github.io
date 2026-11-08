@@ -26,7 +26,7 @@ const config: Config = {
       tagName: "meta",
       attributes: {
         name: "google-site-verification",
-        content: "LrDDB9mQYh1I7RerDdFcOrpA3Si06S5LHlipKNbmTKY",
+        content: "7YQ8fxwOerk4JrUmlS4vENvQG6hUlgxW0VlJIKH4kL4",
       },
     },
   ],
