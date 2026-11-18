@@ -104,7 +104,7 @@ const config: Config = {
           "aria-label": "Author",
         },
         {
-          href: "https://github.com/Ganesan-Chandran/vscode-fetch-client",
+          href: "https://github.com/fetchclient/vscode-fetch-client",
           position: "right",
           className: "header-github-link",
           "aria-label": "GitHub repository",

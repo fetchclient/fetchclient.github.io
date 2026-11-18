@@ -65,7 +65,7 @@ export default function Home(): ReactNode {
         url: "https://fetchclient.github.io/",
         logo: "https://fetchclient.github.io/img/fetch-client.png",
         sameAs: [
-          "https://github.com/Ganesan-Chandran/vscode-fetch-client",
+          "https://github.com/fetchclient/vscode-fetch-client",
           "https://marketplace.visualstudio.com/items?itemName=GanesanChandran.fetch-client",
         ],
       },
@@ -79,7 +79,7 @@ export default function Home(): ReactNode {
         url: "https://fetchclient.github.io/",
         image: "https://fetchclient.github.io/img/fetch-client.png",
         codeRepository:
-          "https://github.com/Ganesan-Chandran/vscode-fetch-client",
+          "https://github.com/fetchclient/vscode-fetch-client",
         isAccessibleForFree: true,
         author: {
           "@id": "https://fetchclient.github.io/#organization",
