@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Open Source",
     png: require("@site/static/img/open-source.png").default,
-    link: "https://github.com/Ganesan-Chandran/vscode-fetch-client",
+    link: "https://github.com/fetchclient/vscode-fetch-client",
     description: (
       <>
         Fetch Client is open source on GitHub, full transparency and
