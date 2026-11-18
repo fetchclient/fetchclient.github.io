@@ -78,8 +78,7 @@ export default function Home(): ReactNode {
           "Free and open-source REST API client for Visual Studio Code with API testing, automation, data-driven testing, performance testing and CLI support.",
         url: "https://fetchclient.github.io/",
         image: "https://fetchclient.github.io/img/fetch-client.png",
-        codeRepository:
-          "https://github.com/fetchclient/vscode-fetch-client",
+        codeRepository: "https://github.com/fetchclient/vscode-fetch-client",
         isAccessibleForFree: true,
         author: {
           "@id": "https://fetchclient.github.io/#organization",
