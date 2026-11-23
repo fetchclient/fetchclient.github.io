@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import Heading from "@theme/Heading";
+import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
 import type { ReactNode } from "react";
 
@@ -19,6 +19,17 @@ const FeatureList: FeatureItem[] = [
       <>
         Fetch Client is open source on GitHub, full transparency and
         community-driven development.
+      </>
+    ),
+  },
+  {
+    title: "AI Prompt Integration",
+    png: require("@site/static/img/ai-logo.png").default,
+    link: "./docs/extension/features/advanced/ai-prompt-generation",
+    description: (
+      <>
+        Prompt generation for create test cases in Fetch Client's JSON format
+        and API documentation.
       </>
     ),
   },
@@ -132,61 +143,34 @@ const FeatureList: FeatureItem[] = [
 ];
 
 function Feature({ title, png, description, link }: FeatureItem) {
-  return (
-    <div className={clsx("col col--4")}>
-      <div className="text--center">
-        <img
-          src={png}
-          alt={title}
-          style={{ height: "100px", width: "100px" }}
-        />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">
-          {link ? (
-            <a
-              className="custom-link"
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {title}
-            </a>
-          ) : (
-            title
-          )}
-        </Heading>
-        <p>{description}</p>
-      </div>
-    </div>
+  const body = (
+    <>
+      <img src={png} alt="" className={styles.icon} loading="lazy" />
+      <Heading as="h3">{title}</Heading>
+      <p>{description}</p>
+    </>
+  );
+  return link ? (
+    <Link className={styles.card} to={link.replace(/^\.\//, "/")}>
+      {body}
+    </Link>
+  ) : (
+    <div className={styles.card}>{body}</div>
   );
 }
 
-function chunkArray<T>(array: T[], size: number): T[][] {
-  const chunks: T[][] = [];
-  for (let i = 0; i < array.length; i += size) {
-    chunks.push(array.slice(i, i + size));
-  }
-  return chunks;
-}
-
 export default function HomepageFeatures(): ReactNode {
-  const rows = chunkArray(FeatureList, 3);
-
   return (
     <section className={styles.features}>
       <div className="container">
-        {rows.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className="row"
-            style={{ justifyContent: "center" }}
-          >
-            {row.map((props, idx) => (
-              <Feature key={idx} {...props} />
-            ))}
-          </div>
-        ))}
+        <Heading as="h2" className={styles.title}>
+          Everything you need to build and test APIs
+        </Heading>
+        <div className={styles.grid}>
+          {FeatureList.map((props) => (
+            <Feature key={props.title} {...props} />
+          ))}
+        </div>
       </div>
     </section>
   );

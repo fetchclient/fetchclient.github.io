@@ -1,0 +1,120 @@
+---
+slug: /extension/features/advanced/ai-prompt-generation
+---
+
+# AI Prompt Generation
+
+Generate AI prompts directly from Fetch Client to create API test cases and API documentation using external AI assistants such as ChatGPT, Claude, Gemini, and others.
+
+Fetch Client provides a dedicated **AI Prompt** tab in the Response panel with predefined prompt-generation options. These prompts include the necessary API context and instructions, allowing AI assistants to generate useful content without requiring you to manually prepare API details.
+
+## 🤖 Opening the AI Prompt tab
+
+1. Open an API request in Fetch Client.
+2. Execute the request to get a response.
+3. Navigate to the **Response** panel.
+4. Select the **AI Prompt** tab.
+
+The AI Prompt tab provides two prompt-generation options:
+
+- **Create Test Cases**
+- **Create Documentation**
+
+## 🧪 Create Test Cases
+
+Generate prompts that instruct an AI assistant to create API test cases based on the current request and response.
+
+The generated prompt includes API context and instructions to produce test cases in **Fetch Client's JSON format**.
+
+### Generating test cases
+
+1. Open the API request and execute it.
+2. Navigate to the **AI Prompt** tab.
+3. Select **Create Test Cases**.
+4. Fetch Client generates a prompt based on the API context.
+5. Copy the generated prompt.
+6. Open your preferred AI chat assistant (ChatGPT, Claude, Gemini, etc.).
+7. Paste the prompt and ask the AI assistant to generate test cases.
+
+<div align="center">
+  <br />
+  <img
+    src="/img/ai-prompt-tab.png?raw=true"
+    alt="AI Prompt tab in the Response panel"
+    width={700}
+  />
+  <br />
+</div>
+
+### Importing generated test cases
+
+Once the AI assistant generates the test cases:
+
+1. Copy the generated JSON content from the AI chat.
+2. Save it as a `.json` file.
+3. Open Fetch Client.
+4. Use the appropriate import option to import the generated test cases.
+
+The imported test cases can then be used within Fetch Client.
+
+<div align="center">
+  <img
+    src="/img/ai-test-case.png?raw=true"
+    alt="Create Test Cases prompt generation"
+  />
+  <br />
+  <br />
+</div>
+
+:::warning
+The AI assistant generates the test case JSON. Review the generated content before importing it into Fetch Client.
+:::
+
+## 📖 Create Documentation
+
+Generate prompts to create API documentation using an external AI assistant.
+
+Fetch Client prepares a prompt using the available API context, which can be used to instruct an AI assistant to generate structured API documentation.
+
+### Generating API documentation
+
+1. Open the API request and execute it.
+2. Navigate to the **AI Prompt** tab.
+3. Select **Create Documentation**.
+4. Fetch Client generates the documentation prompt.
+5. Copy the generated prompt.
+6. Open your preferred AI chat assistant.
+7. Paste the prompt and ask the AI assistant to generate API documentation.
+
+The AI assistant processes the prompt and generates API documentation that you can review, modify, and use in your project.
+
+## 🌐 Supported AI assistants
+
+AI Prompt Generation is not tied to any particular AI provider. You can use the generated prompts with any AI chat assistant that accepts text prompts.
+
+Some examples include:
+
+| AI Assistant        | Website                                         |
+| ------------------- | ----------------------------------------------- |
+| ChatGPT             | [chatgpt.com](https://chatgpt.com/)             |
+| Claude              | [claude.ai](https://claude.ai/)                 |
+| Gemini              | [gemini.google.com](https://gemini.google.com/) |
+| Other AI assistants | Any compatible AI chat assistant                |
+
+No direct AI provider integration or API key configuration is required to use this feature.
+
+## 💡 Use cases
+
+| Use case                 | Description                                                                |
+| ------------------------ | -------------------------------------------------------------------------- |
+| API Test Case Generation | Generate test cases for API validation using Fetch Client's JSON format.   |
+| API Documentation        | Generate API documentation using an AI assistant.                          |
+| Test Coverage            | Use AI-generated test cases to expand API test coverage.                   |
+| Faster API Development   | Reduce the manual effort involved in writing test cases and documentation. |
+
+## ⚠️ Important Notes
+
+- AI prompt generation prepares prompts; it does not directly communicate with an AI provider.
+- You can use any compatible AI chat assistant.
+- AI-generated test cases must be saved as a JSON file before importing them into Fetch Client.
+- Always review AI-generated test cases and documentation before using them.
