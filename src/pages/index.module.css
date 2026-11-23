@@ -1,44 +1,156 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 2rem 0;
-  text-align: center;
+  padding: 3.5rem 0;
   position: relative;
   overflow: hidden;
-  background-color: powderblue;
+  background: linear-gradient(135deg, #e3f2fd 0%, #f4f8fb 55%, #dbeafe 100%);
 }
 
 [data-theme="dark"] .heroBanner {
-  background-color: #0f172a;
+  background: linear-gradient(135deg, #0f172a 0%, #12223f 60%, #0f2a4a 100%);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.heroText {
+  text-align: left;
+}
+
+.heroText > div:first-child {
+  width: 96px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  max-width: 34rem;
+  color: var(--ifm-color-emphasis-800);
 }
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.ghost {
+  color: var(--ifm-font-color-base);
+  background: var(--fc-surface);
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.ghost:hover {
+  color: #fff;
+  background: var(--fc-nav-active);
+  border-color: var(--fc-nav-active);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.badges img {
+  display: block;
+  height: 20px;
+}
+
+.section {
+  padding: 3.5rem 0;
+}
+
+.sectionAlt {
+  background: var(--fc-surface-alt);
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step {
+  padding: 1.5rem;
+  background: var(--fc-surface);
+  border: 1px solid var(--fc-border);
+  border-radius: 12px;
+  box-shadow: var(--fc-shadow);
+}
+
+.step h3 {
+  margin-bottom: 0.4rem;
+}
+
+.step p {
+  margin: 0;
+}
+
+.stepNum {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: var(--fc-nav-active);
+  color: #fff;
+  font-weight: 700;
 }
 
-.buttonSpace {
-  margin-right: 10px;
+.cliGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
 }
 
-.detailsAlignement {
-  padding-top: 40px;
+.cliGrid .sectionTitle {
+  text-align: left;
 }
 
-.buttonLeftSpace {
-  margin-left: 10px;
+.cta .sectionTitle {
+  margin-bottom: 1.5rem;
 }
 
-.mainStyle {
-  padding-top: 1rem 0px;
+.buttonsCenter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2.5rem 0;
+  }
+
+  .heroGrid,
+  .cliGrid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    font-size: 2.3rem;
+  }
 }

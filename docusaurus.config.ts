@@ -30,6 +30,7 @@ const config: Config = {
       },
     },
   ],
+  clientModules: ["./src/clientModules/imageZoom.ts"],
   themes: [
     "@docusaurus/theme-mermaid",
     [
@@ -47,6 +48,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
+          breadcrumbs: true,
           editUrl:
             "https://github.com/fetchclient/fetchclient.github.io/tree/main/",
         },
@@ -68,6 +70,16 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
+    },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 4,
+    },
     navbar: {
       title: "Fetch Client",
       style: "dark",
@@ -77,26 +89,17 @@ const config: Config = {
       },
       items: [
         {
-          label: "Documentation",
+          type: "docSidebar",
+          sidebarId: "extensionSidebar",
+          label: "Extension",
           position: "left",
-          items: [
-            {
-              type: "docSidebar",
-              sidebarId: "extensionSidebar",
-              label: "Fetch Client Extension",
-            },
-            {
-              type: "docSidebar",
-              sidebarId: "cliSidebar",
-              label: "Fetch Client CLI",
-            },
-          ],
         },
-        // {
-        //   to: "/blog",
-        //   label: "Blog",
-        //   position: "left",
-        // },
+        {
+          type: "docSidebar",
+          sidebarId: "cliSidebar",
+          label: "CLI",
+          position: "left",
+        },
         {
           href: "https://ganesan-chandran.github.io/",
           position: "right",
@@ -109,15 +112,61 @@ const config: Config = {
           className: "header-github-link",
           "aria-label": "GitHub repository",
         },
+        {
+          href: "https://ganesan-chandran.github.io/",
+          label: "Author",
+          position: "right",
+          className: "navbar-mobile-only",
+        },
+        {
+          href: "https://github.com/fetchclient/vscode-fetch-client",
+          label: "GitHub",
+          position: "right",
+          className: "navbar-mobile-only",
+        },
       ],
     },
     footer: {
       style: "dark",
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://ganesan-chandran.github.io/" target="_blank" rel="noopener noreferrer">Ganesan Chandran</a>.<br/><br/><a href="/docs/credits">Credits & Attributions</a>.`,
+      links: [
+        {
+          title: "Docs",
+          items: [
+            { label: "Extension", to: "/docs/extension/introduction" },
+            { label: "CLI", to: "/docs/cli/introduction" },
+            { label: "What's new", to: "/blog" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            {
+              label: "GitHub",
+              href: "https://github.com/fetchclient/vscode-fetch-client",
+            },
+            {
+              label: "Report an issue",
+              href: "https://github.com/fetchclient/vscode-fetch-client/issues",
+            },
+          ],
+        },
+        {
+          title: "Get it",
+          items: [
+            {
+              label: "VS Code Marketplace",
+              href: "https://marketplace.visualstudio.com/items?itemName=GanesanChandran.fetch-client",
+            },
+            { label: "Credits", to: "/docs/credits" },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="https://ganesan-chandran.github.io/" target="_blank" rel="noopener noreferrer">Ganesan Chandran</a>.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ["bash", "powershell", "json"],
     },
     markdown: {
       mermaid: true,
